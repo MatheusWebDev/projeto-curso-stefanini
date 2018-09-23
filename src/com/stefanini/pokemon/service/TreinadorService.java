@@ -17,8 +17,12 @@ public class TreinadorService extends ServiceBase {
 		return dto;
 	}
 	
-	public TreinadorDTO excluir(TreinadorDTO dto) {
-		return dto;
+	public void excluir(TreinadorDTO dto) {
+
+	}
+	
+	public void excluir(Long id) {
+
 	}
 	
 	public TreinadorDTO obter(Long id) {

@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 
 @ApplicationScoped
 public class EntityManagerProducer implements Serializable {
+
 	@PersistenceContext(unitName = "pokemon")
 	@Produces
 	private EntityManager em;

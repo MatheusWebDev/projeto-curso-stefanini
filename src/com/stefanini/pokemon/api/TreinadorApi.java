@@ -13,7 +13,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.stefanini.pokemon.dtos.TreinadorDTO;
-import com.stefanini.pokemon.parsers.TreinadorParserDTO;
 import com.stefanini.pokemon.service.TreinadorService;
 
 @Path("/treinador")
@@ -26,14 +25,14 @@ public class TreinadorApi {
 	
 	@POST
 	public Response incluir(TreinadorDTO treinador) {
-		treinadorService.incluir(treinador);
-		return Response.ok().build();
+		TreinadorDTO treinadorDTO = treinadorService.incluir(treinador);
+		return Response.ok(treinadorDTO).build();
 	}
 
 	@PUT
 	public Response alterar(TreinadorDTO treinador) {
-		treinadorService.alterar(treinador);
-		return Response.ok().build();
+		TreinadorDTO treinadorDTO = treinadorService.alterar(treinador);
+		return Response.ok(treinadorDTO).build();
 	}
 
 	@DELETE
@@ -45,15 +44,14 @@ public class TreinadorApi {
 
 	@GET
 	public Response listar() {
-		TreinadorParserDTO treinadorParser = new TreinadorParserDTO();
 		return Response.ok(this.treinadorService.listar()).build();
 	}
 	
 
 	@GET
 	@Path("/{id}")
-	public Response obterTreinador(@PathParam("id") Long id) {
-		return null;
+	public Response obter(@PathParam("id") Long id) {
+		return Response.ok(treinadorService.obter(id)).build();
 		
 	}
 

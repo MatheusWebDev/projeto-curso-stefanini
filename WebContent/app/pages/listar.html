@@ -1,0 +1,34 @@
+<div class="row">
+    <table class="table table-stripped">
+        <thead>
+            <th>Nome</th>
+            <th>Tipo</th>
+            <th>Level</th>
+            <th>Opções</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="pokemon in vm.service.pokemons">
+                <td ng-bind="pokemon.nome"></td>
+                <td>{{pokemon.descricaoTipo}} </td>
+                <td>{{pokemon.level}} </td>
+                <td>
+                    <pokemon-dropdown-menu id="{{'menu-' + $index}}">
+                        <a class="dropdown-item" href="" ng-click="vm.editar(pokemon, $index)">Editar</a>
+                        <a class="dropdown-item" href="" ng-disabled="vm.pokemon.id === pokemon.id" data-toggle="modal"
+                            data-target="#modal-exclusao">Excluir</a>
+                    </pokemon-dropdown-menu>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="row">
+    <button class="btn btn-primary" ng-click="vm.novoPokemon()">[+] Adicionar Pokemon</button>
+</div>
+<pokemon-modal id-modal="modal-exclusao" callback-confirmar="vm.excluir($index)">
+    <div class="row">
+        <div class="col">
+            Deseja excluir esse Pokemon?
+        </div>
+    </div>
+</pokemon-modal>

@@ -40,5 +40,8 @@ Prova De Alinhamento
     b) Crie uma validação para permitir que o usuário acesse a tela de consulta apenas depois de fazer o login;
 
 
+PARABÉNS, VOCÊS PASSARAM NA PROVA!!!! 
+obs:não precisa responder as questões
+
 
 

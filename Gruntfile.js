@@ -1,6 +1,6 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
-    grunt.initConfig({        
+    grunt.initConfig({
         /*jshint: {*/
         //    all: ['WebContent/app/js/**/*.js', '!WebContent/app/js/assets/**/*.js']
         /*},*/
@@ -24,13 +24,13 @@ module.exports = function(grunt) {
             }
         },
         htmlmin: {
-            dist:{
+            dist: {
                 expand: true,
                 options: {
                     removeComments: true,
                     collapseWhitespace: true
                 },
-                src: ['WebContent/app/pages/**/*.html'],
+                src: ['WebContent/app/pages/**/*.html', 'index.html'],
                 dest: 'dist'
             }
         },
@@ -38,9 +38,24 @@ module.exports = function(grunt) {
             dist: {
                 src: ['dist']
             }
+        },
+        connect: {
+            server: {
+                options: {
+                    port: 8000,
+                    base: './dist'
+                }
+            }
+        },
+        watch: {
+            files:  ['WebContent/app/**/*.{js, html, css, jpeg, png, jpg}', 'index.html'],
+            tasks: ['atualizar'],
+            options: {
+                spawn: false,
+                livereload: true
+            }
         }
-
-
+        
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -49,7 +64,15 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
-    grunt.registerTask('default', ['clean:dist', 'concat:dist', 'uglify:dist', 'cssmin:dist', 'htmlmin:dist']);
-  
-  };
+    grunt.registerTask('default', [
+        'clean:dist', 'concat:dist', 'uglify:dist', 
+        'cssmin:dist', 'htmlmin:dist', 'connect:server', 'watch']);
+
+    grunt.registerTask('atualizar', [
+        'clean:dist', 'concat:dist', 'uglify:dist', 
+        'cssmin:dist', 'htmlmin:dist']);
+
+};

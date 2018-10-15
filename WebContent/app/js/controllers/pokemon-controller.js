@@ -10,9 +10,7 @@ function PokemonController($scope, $timeout, $rootScope, PokemonService, Constan
     self.service = PokemonService;
 
     self.init = function() {
-        self.service.pokemons.forEach(pokemon, function() {
-            self.setTipo(pokemon);
-        });
+        
     };
 
     
@@ -21,11 +19,7 @@ function PokemonController($scope, $timeout, $rootScope, PokemonService, Constan
     };
     
     self.setTipo = function(pokemon) {
-        self.service.tipos.forEach(tipo, function() {
-            if (pokemon.tipo === tipo.codigo) {
-                pokemon.descricaoTipo = tipo.descricao;
-            }
-        });
+        
     };
 
     self.cadastrar = function (pokemon) {
@@ -34,22 +28,7 @@ function PokemonController($scope, $timeout, $rootScope, PokemonService, Constan
         self.service.pokemons.unshift(pokemon);
         self.pokemon = null;
         $rootScope.addMensagem({texto: Constantes.MENSAGEM_INCLUIR_SUCESSO, tipo: TipoMensagem.SUCCESS}, true, false);
-        $scope.$emit('CADASTRAR_POKEMON3', pokemon);
-        $rootScope.$emit('CADASTRAR_POKEMON', pokemon);
-        $rootScope.$broadcast('CADASTRAR_POKEMON2', pokemon);
     };
-
-    $scope.$on('CADASTRAR_POKEMON', function() {
-        console.log('$rootScope.emit');
-    });
-
-    $scope.$on('CADASTRAR_POKEMON2', function() {
-        console.log('$rootScope.broadcast');
-    });
-
-    $scope.$on('CADASTRAR_POKEMON3', function() {
-        console.log('$scope.broadcast');
-    });
 
     self.excluir = function (index) {
         self.service.pokemons.splice(index, 1);

@@ -1,21 +1,25 @@
 <div class="row">
     <table class="table table-stripped">
         <thead>
+            <th class="text-center">#</th>
+            <th>Avatar</th>
             <th>Nome</th>
             <th>Tipo</th>
-            <th>Level</th>
-            <th>Opções</th>
+            <th class="text-center">Level</th>
+            <th class="text-center">Opções</th>
         </thead>
         <tbody>
-            <tr ng-repeat="pokemon in vm.service.pokemons">
+            <tr ng-repeat="pokemon in vm.service.pokemons | limitTo: 150 track by $index">
+                <td class="text-center" ng-bind="pokemon.id"></td>
+                <td><img ng-src="{{pokemon.avatar}}"></td>
                 <td ng-bind="pokemon.nome"></td>
                 <td>{{pokemon.descricaoTipo}} </td>
-                <td>{{pokemon.level}} </td>
-                <td>
+                <td class="text-center">{{pokemon.level}} </td>
+                <td class="text-center">
                     <pokemon-dropdown-menu id="{{'menu-' + $index}}">
                         <a class="dropdown-item" href="" ng-click="vm.editar(pokemon, $index)">Editar</a>
                         <a class="dropdown-item" href="" ng-disabled="vm.pokemon.id === pokemon.id" data-toggle="modal"
-                            data-target="#modal-exclusao">Excluir</a>
+                            data-target="#modal-exclusao" ng-click="vm.indexPokemonSelecionado = $index">Excluir</a>
                     </pokemon-dropdown-menu>
                 </td>
             </tr>
@@ -25,10 +29,3 @@
 <div class="row">
     <button class="btn btn-primary" ng-click="vm.novoPokemon()">[+] Adicionar Pokemon</button>
 </div>
-<pokemon-modal id-modal="modal-exclusao" callback-confirmar="vm.excluir($index)">
-    <div class="row">
-        <div class="col">
-            Deseja excluir esse Pokemon?
-        </div>
-    </div>
-</pokemon-modal>

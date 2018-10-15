@@ -1,25 +1,35 @@
-<div class="row mTop5" ng-show="vm.pokemon">
+<div class="row mTop5">
+    <div class="col">
+        <form ng-submit="vm.cadastrar(vm.pokemon)">
+            <div class="form-group">
+                <label>Nome</label>
+                <input class="form-control" ng-model="vm.pokemon.nome" ng-required="true">
+            </div>
+            <div class="form-group">
+                <label>Tipo</label>
+                <select class="form-control" ng-model="vm.pokemon.tipo" ng-change="vm.loading()" 
+                    ng-options="tipo.codigo as tipo.descricao for tipo in vm.service.tipos"
+                    ng-required="true">
+                    <option value="">Selecione</option>
+                </select>
+                <label>{{vm.carregando}}</label>
+            </div>
+            <div class="form-group">
+                <label>Level</label>
+                <input class="form-control" ng-model="vm.pokemon.level" ng-required="true">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" type="submit" ng-if="!vm.pokemon.id">Cadastrar</button>
+                <button class="btn btn-success" ng-if="vm.pokemon.id" ng-click="vm.alterar(vm.pokemon)">Alterar</button>
+                <button class="btn btn-danger" ng-click="vm.limpar()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+<pokemon-modal id-modal="modal-exclusao" callback-confirmar="vm.excluir(vm.indexPokemonSelecionado)">
+    <div class="row">
         <div class="col">
-            <form ng-submit="vm.cadastrar(vm.pokemon)">
-                <div class="form-group">
-                    <label>Nome</label>
-                    <input class="form-control" ng-model="vm.pokemon.nome" ng-required="true">
-                </div>
-                <div class="form-group">
-                    <label>Tipo</label>
-                    <select class="form-control" ng-model="vm.pokemon.tipo" ng-change="vm.loading()" ng-options="tipo.codigo as tipo.descricao for tipo in vm.tipos"
-                    ng-required="true"></select>
-                    <label>{{vm.carregando}}</label>
-                </div>
-                <div class="form-group">
-                    <label>Level</label>
-                    <input class="form-control" ng-model="vm.pokemon.level" ng-required="true">
-                </div>
-                <div class="form-group">
-                    <button class="btn btn-success" type="submit" ng-if="!vm.pokemon.id">Cadastrar</button>
-                    <button class="btn btn-success" ng-if="vm.pokemon.id" ng-click="vm.alterar(vm.pokemon)">Alterar</button>
-                    <button class="btn btn-danger" ng-click="vm.limpar()">Cancelar</button>
-                </div>
-            </form>
+            Deseja excluir esse Pokemon?
         </div>
     </div>
+</pokemon-modal>

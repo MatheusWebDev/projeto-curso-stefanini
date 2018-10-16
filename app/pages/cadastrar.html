@@ -12,24 +12,16 @@
                     ng-required="true">
                     <option value="">Selecione</option>
                 </select>
-                <label>{{vm.carregando}}</label>
             </div>
             <div class="form-group">
                 <label>Level</label>
                 <input class="form-control" ng-model="vm.pokemon.level" ng-required="true">
             </div>
             <div class="form-group">
-                <button class="btn btn-success" type="submit" ng-if="!vm.pokemon.id">Cadastrar</button>
-                <button class="btn btn-success" ng-if="vm.pokemon.id" ng-click="vm.alterar(vm.pokemon)">Alterar</button>
-                <button class="btn btn-danger" ng-click="vm.limpar()">Cancelar</button>
+                <button class="btn btn-outline-success" type="submit" ng-if="!vm.pokemon.id">Cadastrar</button>
+                <button class="btn btn-outline-success" ng-if="vm.pokemon.id" ng-click="vm.alterar(vm.pokemon)">Alterar</button>
+                <button class="btn btn-outline-danger" ng-click="vm.voltar()">Cancelar</button>
             </div>
         </form>
     </div>
 </div>
-<pokemon-modal id-modal="modal-exclusao" callback-confirmar="vm.excluir(vm.indexPokemonSelecionado)">
-    <div class="row">
-        <div class="col">
-            Deseja excluir esse Pokemon?
-        </div>
-    </div>
-</pokemon-modal>

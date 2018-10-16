@@ -2,9 +2,9 @@
 angular.module('PokemonModule')
     .controller('PokemonController', PokemonController);
 
-PokemonController.$inject = ['$scope', '$timeout', '$rootScope', 'PokemonService', 'Constantes', 'TipoMensagem'];
+PokemonController.$inject = ['$scope', '$timeout', '$rootScope', 'PokemonService', 'Mensagens', 'TipoMensagem'];
 
-function PokemonController($scope, $timeout, $rootScope, PokemonService, Constantes, TipoMensagem) {
+function PokemonController($scope, $timeout, $rootScope, PokemonService, Mensagens, TipoMensagem) {
     
     var self = this;
     self.service = PokemonService;
@@ -19,7 +19,11 @@ function PokemonController($scope, $timeout, $rootScope, PokemonService, Constan
     };
     
     self.setTipo = function(pokemon) {
-        
+        self.service.tipos.forEach(tipo, function() {
+            if (pokemon.tipo === tipo.codigo) {
+                pokemon.descricaoTipo = tipo.descricao;
+            }
+        });
     };
 
     self.cadastrar = function (pokemon) {
@@ -27,13 +31,13 @@ function PokemonController($scope, $timeout, $rootScope, PokemonService, Constan
         self.setTipo(pokemon);
         self.service.pokemons.unshift(pokemon);
         self.pokemon = null;
-        $rootScope.addMensagem({texto: Constantes.MENSAGEM_INCLUIR_SUCESSO, tipo: TipoMensagem.SUCCESS}, true, false);
+        $rootScope.addMensagem({texto: Mensagens.MENSAGEM_INCLUIR_SUCESSO, tipo: TipoMensagem.SUCCESS}, true, false);
     };
 
     self.excluir = function (index) {
         self.service.pokemons.splice(index, 1);
         $rootScope.limparMensagens();
-        $rootScope.addMensagem({texto: Constantes.MENSAGEM_EXCLUIR_SUCESSO, tipo: TipoMensagem.SUCCESS}, false, true);        
+        $rootScope.addMensagem({texto: Mensagens.MENSAGEM_EXCLUIR_SUCESSO, tipo: TipoMensagem.SUCCESS}, false, true);        
     };
     
     self.editar = function (pokemon, index) {
@@ -47,17 +51,10 @@ function PokemonController($scope, $timeout, $rootScope, PokemonService, Constan
         self.service.pokemons.splice(index, 1, pokemon);
         self.pokemon = null;
         $rootScope.limparMensagens();
-        $rootScope.mensagens.push({texto: 'Pokemon alterado com sucesso', tipo: TipoMensagem.SUCCESS});
+        $rootScope.addMensagem({texto: 'Pokemon alterado com sucesso', tipo: TipoMensagem.SUCCESS});
     };
     
     self.limpar = function () {
         self.pokemon = null;
-    };
-    
-    self.loading = function() {
-        self.carregando = "Carregando...";
-        $timeout(function() {
-            self.carregando = null;
-        }, 1000);
     };
 }

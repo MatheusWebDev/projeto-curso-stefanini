@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" ng-init="vm.init()">
     <table class="table table-stripped">
         <thead>
             <th class="text-center">#</th>
@@ -27,5 +27,13 @@
     </table>
 </div>
 <div class="row">
-    <button class="btn btn-primary" ng-click="vm.novoPokemon()">[+] Adicionar Pokemon</button>
+    <button class="btn btn-outline-primary" ng-click="vm.novoPokemon()">[+] Adicionar Pokemon</button>
 </div>
+<pokemon-modal id-modal="modal-exclusao" title-modal="Confirmar"
+    callback-confirmar="vm.excluir(vm.indexPokemonSelecionado)">
+    <div class="row">
+        <div class="col">
+            Deseja excluir esse Pokemon?
+        </div>
+    </div>
+</pokemon-modal>

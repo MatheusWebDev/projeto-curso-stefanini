@@ -1,13 +1,18 @@
 module.exports = function (grunt) {
 
     grunt.initConfig({
-        /*jshint: {*/
-        //    all: ['WebContent/app/js/**/*.js', '!WebContent/app/js/assets/**/*.js']
-        /*},*/
-
+        jshint: {
+            options: {
+                esversion: 6,
+                bitwise: true,
+                curly: true,
+                asi: false
+            },
+            all: ['app/js/**/*.js', '!app/js/assets/**/*.js']
+        },
         concat: {
             dist: {
-                src: ['WebContent/app/js/**/*.js', '!WebContent/app/js/assets/**/*.js'],
+                src: ['app/js/**/*.js', '!app/js/assets/**/*.js'],
                 dest: 'dist/js/build.min.js'
             }
         },
@@ -19,7 +24,7 @@ module.exports = function (grunt) {
         },
         cssmin: {
             dist: {
-                src: ['WebContent/app/css/**/*.css'],
+                src: ['app/css/**/*.css'],
                 dest: 'dist/css/style.min.css'
             }
         },
@@ -30,7 +35,33 @@ module.exports = function (grunt) {
                     removeComments: true,
                     collapseWhitespace: true
                 },
-                src: ['WebContent/app/pages/**/*.html', 'index.html'],
+                src: ['app/pages/**/*.html', 'index.html'],
+                dest: 'dist'
+            }
+        },
+        copy: {
+            dist: {
+                expand: true,
+                src: [
+                    'node_modules/angular/angular.min.js', 
+                    'node_modules/angular-route/angular-route.min.js', 
+                    'node_modules/bootstrap/dist/css/bootstrap.min.css',
+                    'node_modules/bootstrap/dist/js/bootstrap.min.js',
+                    'node_modules/jquery/dist/jquery.min.js'
+                ],
+                dest: 'dist'
+            },
+            dev: {
+                expand: true,
+                src: [
+                    'node_modules/angular/angular.min.js', 
+                    'node_modules/angular-route/angular-route.min.js', 
+                    'node_modules/bootstrap/dist/css/bootstrap.min.css',
+                    'node_modules/bootstrap/dist/js/bootstrap.min.js',
+                    'node_modules/jquery/dist/jquery.min.js',
+                    'app/**',
+                    'index.html'
+                ],
                 dest: 'dist'
             }
         },
@@ -48,8 +79,8 @@ module.exports = function (grunt) {
             }
         },
         watch: {
-            files:  ['WebContent/app/**/*.{js, html, css, jpeg, png, jpg}', 'index.html'],
-            tasks: ['atualizar'],
+            files:  ['app/**/*.js', 'app/**/*.html', 'app/**/*.css', 'index.html'],
+            tasks: ['refresh'],
             options: {
                 spawn: false,
                 livereload: true
@@ -60,19 +91,22 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-uglify-es');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('default', [
-        'clean:dist', 'concat:dist', 'uglify:dist', 
-        'cssmin:dist', 'htmlmin:dist', 'connect:server', 'watch']);
+        'jshint:all','clean:dist', 'copy:dev', 'connect:server', 'watch']);
 
-    grunt.registerTask('atualizar', [
-        'clean:dist', 'concat:dist', 'uglify:dist', 
-        'cssmin:dist', 'htmlmin:dist']);
+    grunt.registerTask('dist', [
+        'jshint:all','clean:dist', 'concat:dist', 'uglify:dist', 
+        'cssmin:dist', 'htmlmin:dist', 'copy:dist', 'connect:server', 'watch']);
+
+    grunt.registerTask('refresh', [
+        'jshint:all', 'clean:dist', 'copy:dev']);
 
 };

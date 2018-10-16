@@ -22,6 +22,7 @@
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-connect": "^2.0.0",
+    "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-cssmin": "^3.0.0",
     "grunt-contrib-htmlmin": "^3.0.0",
     "grunt-contrib-jshint": "^2.0.0",
@@ -29,6 +30,7 @@
     "grunt-contrib-watch": "^1.1.0"
   },
   "dependencies": {
-    "angular-route": "^1.7.5"
+    "angular-route": "^1.7.5",
+    "grunt-contrib-uglify-es": "github:gruntjs/grunt-contrib-uglify#harmony"
   }
 }

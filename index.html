@@ -6,20 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Curso AngularJS</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/WebContent/app/css/style.css">
-    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!--PROD-->
+    <!--<link rel="stylesheet" type="css" href="./css/style.min.css">-->
+     <!--DEV-->
+    <link rel="stylesheet" href="./app/css/style.css">
+    
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="../../node_modules/angular/angular.min.js"></script>
-    <script src="../../node_modules/angular-route/angular-route.min.js"></script>
-    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/WebContent/app/js/app.js"></script>
-    <script src="/WebContent/app/js/directives/pokemon-dropdown-menu-directive.js"></script>
-    <script src="/WebContent/app/js/directives/pokemon-modal-directive.js"></script>
-    <script src="/WebContent/app/js/services/pokemon-service.js"></script>
-    <script src="/WebContent/app/js/controllers/login-controller.js"></script>
-    <script src="/WebContent/app/js/controllers/pokemon-controller.js"></script>
-    <script src="/WebContent/app/js/constants/constants.js"></script>
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./node_modules/angular/angular.min.js"></script>
+    <script src="./node_modules/angular-route/angular-route.min.js"></script>
+    <!--PROD-->
+    <!--<script src="./js/build.min.js"></script>-->
+    <!--DEV-->
+    <script src="./app/js/app.js"></script>
+    <script src="./app/js/constants/constants.js"></script>
+    <script src="./app/js/directives/pokemon-dropdown-menu-directive.js"></script>
+    <script src="./app/js/directives/pokemon-modal-directive.js"></script>
+    <script src="./app/js/controllers/cadastrarPokemon-controller.js"></script>
+    <script src="./app/js/controllers/listarPokemon-controller.js"></script>
+    <script src="./app/js/controllers/login-controller.js"></script>
+    <script src="./app/js/services/pokemon-service.js"></script>
     <script src="//localhost:35729/livereload.js"></script>
 </head> 
 
@@ -29,8 +37,10 @@
         <div class="row">
             <div ng-repeat="mensagem in $root._mensagens" 
                 class="col alert alert-dismissible fade show" role="alert" 
-                ng-class="{'alert alert-success': mensagem.tipo === 'SUCCESS', 'alert-danger': mensagem.tipo === 'ERROR', 
-                    'alert-warning': mensagem.tipo === 'WARNING', 'alert-info': mensagem.tipo === 'INFO'}">
+                ng-class="{'alert alert-success': mensagem.tipo === 'SUCCESS', 
+                    'alert-danger': mensagem.tipo === 'ERROR', 
+                    'alert-warning': mensagem.tipo === 'WARNING', 
+                    'alert-info': mensagem.tipo === 'INFO'}">
                 {{mensagem.texto}}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>

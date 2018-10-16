@@ -8,16 +8,16 @@ run.$inject = ['$rootScope', '$timeout', '$location'];
 function config($routeProvider) {
     $routeProvider
     .when('/login', {
-        templateUrl: 'WebContent/app/pages/login.html',
+        templateUrl: '/app/pages/login.html',
         controller: 'LoginController as vm'
     })
     .when('/listar', {
-        templateUrl: 'WebContent/app/pages/listar.html', 
-        controller: 'PokemonController as vm'
+        templateUrl: '/app/pages/listar.html', 
+        controller: 'ListarPokemonController as vm'
     })
     .when('/cadastrar', {
-        templateUrl: 'WebContent/app/pages/cadastrar.html',
-        controller: 'PokemonController as vm'
+        templateUrl: '/app/pages/cadastrar.html',
+        controller: 'CadastrarPokemonController as vm'
     })
     .otherwise({
         redirectTo: '/login'

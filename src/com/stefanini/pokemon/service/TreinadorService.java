@@ -1,11 +1,9 @@
 package com.stefanini.pokemon.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import com.stefanini.pokemon.daos.TreinadorDAO;
 import com.stefanini.pokemon.dtos.TreinadorDTO;
 import com.stefanini.pokemon.entities.Treinador;
 import com.stefanini.pokemon.parsers.TreinadorParserDTO;
@@ -13,7 +11,7 @@ import com.stefanini.pokemon.parsers.TreinadorParserDTO;
 public class TreinadorService extends ServiceBase {
 
 	@Inject
-	private TreinadorDAO treinadorDAO;
+	private BaseDados baseDados;
 	
 	private TreinadorParserDTO treinadorParserDTO = new TreinadorParserDTO();
 	
@@ -24,7 +22,7 @@ public class TreinadorService extends ServiceBase {
 	
 	public TreinadorDTO alterar(TreinadorDTO dto) {
 		Treinador treinador = treinadorParserDTO.toEntity(dto);
-		return treinadorParserDTO.toDTO(treinadorDAO.alterar(treinador));
+		return treinadorParserDTO.toDTO(treinador);
 	}
 	
 	public void excluir(TreinadorDTO dto) {
@@ -32,17 +30,16 @@ public class TreinadorService extends ServiceBase {
 	}
 	
 	public void excluir(Long id) {
-		treinadorDAO.excluir(id);
+		//treinadorDAO.excluir(id);
 	}
 	
 	public TreinadorDTO obter(Long id) {
-		Treinador treinador = treinadorDAO.obter(id);
+		Treinador treinador = new Treinador();//treinadorDAO.obter(id);
 		return treinadorParserDTO.toDTO(treinador);
 	}
 	
 	public List<TreinadorDTO> listar() {
-		List<Treinador> listaTreinador = new ArrayList<>(); //obter lista de treinadores da base de dados
-		return new TreinadorParserDTO().toDTO(listaTreinador);
+		return new TreinadorParserDTO().toDTO(baseDados.getTreinadores());
 	}
 	
 }

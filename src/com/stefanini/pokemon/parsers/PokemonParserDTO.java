@@ -9,7 +9,7 @@ import com.stefanini.pokemon.entities.Pokemon;
 public class PokemonParserDTO extends AbstractParser<PokemonDTO, Pokemon>{
 
 	@Override
-	PokemonDTO toDTO(Pokemon entity) {
+	public PokemonDTO toDTO(Pokemon entity) {
 //		TipoPokemonParserDTO tipoPokemonParser = new TipoPokemonParserDTO();
 		
 		PokemonDTO dto = new PokemonDTO();
@@ -27,7 +27,7 @@ public class PokemonParserDTO extends AbstractParser<PokemonDTO, Pokemon>{
 	}
 
 	@Override
-	Pokemon toEntity(PokemonDTO dto) {
+	public Pokemon toEntity(PokemonDTO dto) {
 //		TipoPokemonParserDTO tipoPokemonParser = new TipoPokemonParserDTO();
 		
 		Pokemon pokemon = new Pokemon();

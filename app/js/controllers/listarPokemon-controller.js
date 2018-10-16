@@ -10,8 +10,19 @@ function ListarPokemonController($scope, $rootScope, $location, PokemonService, 
     self.service = PokemonService;
 
     self.init = function () {
-        self.service.pokemons.forEach(pokemon => {
-            self.setTipo(pokemon);
+        self.listar();
+    };
+
+    self.listar = function() {
+        self.service.listar()
+        .then(function(response) {
+            self.service.pokemons = response.data;
+           
+            self.service.pokemons.forEach(pokemon => {
+                self.setTipo(pokemon);
+            });
+        }, function(error) {
+            $rootScope.addMensagem({texto: Mensagens.MENSAGEM_INCLUIR_SUCESSO, tipo: TipoMensagem.SUCCESS}, true, false);
         });
     };
 

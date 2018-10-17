@@ -2,17 +2,6 @@ package com.stefanini.pokemon.entities;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "Treinador", schema = "pokemon")
 public class Treinador extends EntityBase {
 
 	/**
@@ -20,23 +9,10 @@ public class Treinador extends EntityBase {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column
 	private Long id;
-
-	@Column
 	private String nome;
-
-	@Column
 	private Integer idade;
-
-	@OneToOne
 	private Usuario usuario;
-
-	@ManyToMany
-	@JoinTable(name = "TreinadorPokemon", 
-			joinColumns = { @JoinColumn(name = "idTreinador") }, 
-			inverseJoinColumns = { @JoinColumn(name = "idPokemon") })
 	private List<Pokemon> pokemons;
 
 	public Integer getIdade() {

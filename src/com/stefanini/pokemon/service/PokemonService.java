@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import com.stefanini.pokemon.dtos.PokemonDTO;
 import com.stefanini.pokemon.entities.Pokemon;
 import com.stefanini.pokemon.parsers.PokemonParserDTO;
+import com.stefanini.pokemon.persistence.BaseDados;
 
 public class PokemonService extends ServiceBase {
 

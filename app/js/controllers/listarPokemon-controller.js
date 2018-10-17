@@ -22,7 +22,7 @@ function ListarPokemonController($scope, $rootScope, $location, PokemonService, 
                 self.setTipo(pokemon);
             });
         }, function(error) {
-            $rootScope.addMensagem({texto: Mensagens.MENSAGEM_INCLUIR_SUCESSO, tipo: TipoMensagem.SUCCESS}, true, false);
+            $rootScope.addMensagem({texto: error.mensagem, tipo: TipoMensagem.SUCCESS}, true, false);
         });
     };
 

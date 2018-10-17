@@ -8,11 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--PROD-->
     <!--<link rel="stylesheet" type="css" href="./css/style.min.css">-->
-     <!--DEV-->
+    <!--DEV-->
     <link rel="stylesheet" href="./app/css/style.css">
-    
+
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
     <script src="./node_modules/jquery/dist/jquery.min.js"></script>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="./node_modules/angular/angular.min.js"></script>
@@ -28,26 +29,28 @@
     <script src="./app/js/controllers/listarPokemon-controller.js"></script>
     <script src="./app/js/controllers/login-controller.js"></script>
     <script src="./app/js/services/pokemon-service.js"></script>
+
+    
     <script src="//localhost:35729/livereload.js"></script>
-</head> 
+</head>
 
 <body ng-app="PokemonModule">
-
-    <div class="container mTop5" ng-init="vm.init()">
+    <div class="container mTop10" ng-init="vm.init()">
         <div class="row">
-            <div ng-repeat="mensagem in $root._mensagens" 
-                class="col alert alert-dismissible fade show" role="alert" 
-                ng-class="{'alert alert-success': mensagem.tipo === 'SUCCESS', 
-                    'alert-danger': mensagem.tipo === 'ERROR', 
-                    'alert-warning': mensagem.tipo === 'WARNING', 
-                    'alert-info': mensagem.tipo === 'INFO'}">
-                {{mensagem.texto}}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+            <div class="col-sm-12">
+                <div ng-repeat="mensagem in $root._mensagens" class="col alert alert-dismissible fade show" role="alert"
+                    ng-class="{'alert alert-success': mensagem.tipo === 'SUCCESS', 
+                'alert-danger': mensagem.tipo === 'ERROR', 
+                'alert-warning': mensagem.tipo === 'WARNING', 
+                'alert-info': mensagem.tipo === 'INFO'}">
+                    {{mensagem.texto}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
             </div>
+            <div class="col-sm-12" ng-view></div>
         </div>
-        <div ng-view></div>
     </div>
 </body>
 

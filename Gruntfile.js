@@ -79,11 +79,20 @@ module.exports = function (grunt) {
             }
         },
         watch: {
-            files:  ['app/**/*.js', 'app/**/*.html', 'app/**/*.css', 'index.html'],
-            tasks: ['refresh'],
-            options: {
-                spawn: false,
-                livereload: true
+            dev: {
+                files:  ['app/**/*.js', 'app/**/*.html', 'app/**/*.css', 'index.html'],
+                tasks: ['refresh'],
+                options: {
+                    spawn: false,
+                    livereload: true
+                }
+            },
+            dist: {
+                files:  ['app/**/*.js', 'app/**/*.html', 'app/**/*.css', 'index.html'],
+                options: {
+                    spawn: false,
+                    livereload: true
+                }
             }
         }
         
@@ -100,11 +109,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('default', [
-        'jshint:all','clean:dist', 'copy:dev', 'connect:server', 'watch']);
+        'jshint:all','clean:dist', 'copy:dev', 'connect:server', 'watch:dev']);
 
     grunt.registerTask('dist', [
         'jshint:all','clean:dist', 'concat:dist', 'uglify:dist', 
-        'cssmin:dist', 'htmlmin:dist', 'copy:dist', 'connect:server', 'watch']);
+        'cssmin:dist', 'htmlmin:dist', 'copy:dist', 'connect:server', 'watch:dist']);
 
     grunt.registerTask('refresh', [
         'jshint:all', 'clean:dist', 'copy:dev']);

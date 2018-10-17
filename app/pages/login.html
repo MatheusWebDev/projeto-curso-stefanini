@@ -1,20 +1,19 @@
-<div class="container">
-    <div class="row justify-content-md-center">
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <form ng-submit="vm.login($root.user)">
-                        <div class="form-group">
-                            <label>Usuário</label>
-                            <input class="form-control" ng-required="true" ng-model="$root.user.username" placeholder="Usuário">
-                        </div>
-                        <div class="form-group">
-                            <label>Senha</label>
-                            <input class="form-control" ng-required="true" ng-model="$root.user.password" placeholder="Senha" type="password">
-                        </div>
-                        <button class="btn btn-outline-primary" type="submit">Login</button>
-                    </form>
-                </div>
+<div class="row justify-content-md-center">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <form ng-submit="vm.login($root.user)">
+                    <div class="form-group">
+                        <label>Usuário</label>
+                        <input class="form-control" ng-required="true" ng-model="$root.user.username" placeholder="Usuário">
+                    </div>
+                    <div class="form-group">
+                        <label>Senha</label>
+                        <input class="form-control" ng-required="true" ng-model="$root.user.password" placeholder="Senha"
+                            type="password">
+                    </div>
+                    <button class="btn btn-outline-primary" type="submit">Login</button>
+                </form>
             </div>
         </div>
     </div>

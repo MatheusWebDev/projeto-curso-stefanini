@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import com.stefanini.pokemon.dtos.TreinadorDTO;
 import com.stefanini.pokemon.entities.Treinador;
 import com.stefanini.pokemon.parsers.TreinadorParserDTO;
+import com.stefanini.pokemon.persistence.BaseDados;
 
 public class TreinadorService extends ServiceBase {
 

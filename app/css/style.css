@@ -1,3 +1,12 @@
 .mTop5 {
     margin-top: 5%;
 }
+
+.mTop10 {
+    margin-top: 10%;
+}
+
+.container-center {
+    margin-top: auto;
+    margin-bottom: auto;
+}

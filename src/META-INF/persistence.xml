@@ -6,11 +6,6 @@
 	<persistence-unit name="pokemon">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
-		<class>com.stefanini.pokemon.api.entities.Pokemon</class>
-		<class>com.stefanini.pokemon.api.entities.TipoPokemon</class>
-		<class>com.stefanini.pokemon.api.entities.Treinador</class>
-		<class>com.stefanini.pokemon.api.entities.Usuario</class>
-
 		<properties>
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.jdbc.Driver" />

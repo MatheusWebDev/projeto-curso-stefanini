@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -36,7 +35,6 @@ public class Pokemon extends EntityBase {
 	@Column
 	private Integer level;
 
-	@ManyToMany(mappedBy = "pokemons")
 	private List<Treinador> treinadores;
 
 //	@ManyToOne
@@ -47,7 +45,6 @@ public class Pokemon extends EntityBase {
 ////	@JoinColumn(name = "tipoPokemonSecundario")
 ////	private TipoPokemon tipoPokemonSecundario;
 ////
-	@ManyToMany(mappedBy = "pokemons")
 	private List<TipoPokemon> tipos;
 	
 	public Long getId() {

@@ -10,16 +10,24 @@ function PokemonService($rootScope, $http, Mensagens, TipoMensagem) {
         {id: 3, nome: 'Charmander', tipo: 1, level: 10}*/
     ];
 
-    var _tipos = [
-        { codigo: 1, descricao: "Fogo" },
-        { codigo: 2, descricao: "Água" },
-        { codigo: 3, descricao: "Planta" }
+    var _tipos = [{
+            codigo: 1,
+            descricao: "Fogo"
+        },
+        {
+            codigo: 2,
+            descricao: "Água"
+        },
+        {
+            codigo: 3,
+            descricao: "Planta"
+        }
     ];
 
     var _pokemonSelecionado;
 
-    var _listar = function() {
-        return $http.get('http://pokemon.com/rest/pokemon');
+    var _listar = function () {
+        return $http.get('http://pokemon.bb.com.br/pokemon/rest/pokemon');
     };
 
     return {

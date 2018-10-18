@@ -2,13 +2,6 @@ package com.stefanini.pokemon.entities;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "Pokemon", schema = "pokemon")
 public class Pokemon extends EntityBase {
 
 	/**
@@ -16,35 +9,20 @@ public class Pokemon extends EntityBase {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column
 	private Long id;
 
-	@Column
 	private String nome;
 
-	@Column
 	private Integer vida;
 
-	@Column
 	private Integer ataque;
 
-	@Column
 	private Integer defesa;
 
-	@Column
 	private Integer level;
 
 	private List<Treinador> treinadores;
 
-//	@ManyToOne
-//	@JoinColumn(name = "tipoPokemon")
-//	private TipoPokemon tipoPokemon;
-//
-////	@ManyToOne
-////	@JoinColumn(name = "tipoPokemonSecundario")
-////	private TipoPokemon tipoPokemonSecundario;
-////
 	private List<TipoPokemon> tipos;
 	
 	public Long getId() {

@@ -24,7 +24,7 @@ public class TreinadorApi {
 	private TreinadorService treinadorService;
 	
 	@POST
-	public Response incluir(TreinadorDTO treinador) {
+	public Response incluir(TreinadorDTO treinador) throws Exception {
 		TreinadorDTO treinadorDTO = treinadorService.incluir(treinador);
 		return Response.ok(treinadorDTO).build();
 	}

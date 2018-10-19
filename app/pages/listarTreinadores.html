@@ -1,0 +1,16 @@
+<div class="row" ng-init="vm.init()">
+    <table class="table table-striped">
+        <thead class="text-center">
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>E-mail</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="treinador in vm.service.treinadores | limitTo: 150 track by $index">
+                <td class="text-center" ng-bind="treinador.nome"></td>
+                <td class="text-center" ng-bind="treinador.idade"></td>
+                <td class="text-center" ng-bind="treinador.usuario.email"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

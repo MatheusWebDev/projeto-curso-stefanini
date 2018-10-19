@@ -45,4 +45,8 @@ public class BaseDados {
 	public void setTreinadores(List<Treinador> treinadores) {
 		this.treinadores = treinadores;
 	}
+	
+	public void addTreinador(Treinador treinador) {
+		treinadores.add(treinador);
+	}
 }

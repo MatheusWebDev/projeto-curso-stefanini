@@ -16,5 +16,4 @@ function LoginController($scope, $rootScope, $location, Mensagens, TipoMensagem)
             $rootScope.addMensagem({texto: Mensagens.MENSAGEM_LOGIN_SUCESSO, tipo: TipoMensagem.SUCCESS}, true, true);
         }
     };
-
 }

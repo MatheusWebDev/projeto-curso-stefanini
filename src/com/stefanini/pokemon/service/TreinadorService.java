@@ -17,8 +17,22 @@ public class TreinadorService extends ServiceBase {
 	private TreinadorParserDTO treinadorParserDTO = new TreinadorParserDTO();
 	
 	
-	public TreinadorDTO incluir(TreinadorDTO dto) {
-		return dto;
+	public TreinadorDTO incluir(TreinadorDTO dto) throws Exception {
+		if (dto == null) {
+			throw new Exception("Dados vazios !");
+		}
+		
+		List<TreinadorDTO> treinadores = listar();
+		
+		for (TreinadorDTO t : treinadores) {
+			if (t.getUsuario().getEmail().equalsIgnoreCase(dto.getUsuario().getEmail())) {
+				throw new Exception("E-mail já cadastrado !");
+			}
+		}
+		
+		Treinador treinador = treinadorParserDTO.toEntity(dto);
+		baseDados.addTreinador(treinadorParserDTO.toEntity(dto));
+		return treinadorParserDTO.toDTO(treinador);
 	}
 	
 	public TreinadorDTO alterar(TreinadorDTO dto) {

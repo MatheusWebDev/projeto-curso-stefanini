@@ -14,6 +14,16 @@ public class UsuarioDTO implements Serializable {
 	private String senha;
 	
 	
+	public UsuarioDTO(String email, String senha) {
+		this.email = email;
+		this.senha = senha;
+	}
+	public UsuarioDTO(Long id, String email, String senha) {
+		this.id = id;
+		this.email = email;
+		this.senha = senha;
+	}
+	public UsuarioDTO() {}
 	public Long getId() {
 		return id;
 	}

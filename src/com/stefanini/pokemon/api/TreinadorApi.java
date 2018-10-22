@@ -13,6 +13,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import com.stefanini.pokemon.dtos.TreinadorDTO;
+import com.stefanini.pokemon.dtos.UsuarioDTO;
+import com.stefanini.pokemon.entities.Treinador;
 import com.stefanini.pokemon.service.TreinadorService;
 
 @Path("/treinador")
@@ -53,6 +55,13 @@ public class TreinadorApi {
 	public Response obter(@PathParam("id") Long id) {
 		return Response.ok(treinadorService.obter(id)).build();
 		
+	}
+	
+	@POST
+	@Path("/login")
+	public Response logar(UsuarioDTO usuario) throws Exception {
+		Treinador treinador = treinadorService.verificarLogin(usuario);	
+		return Response.ok(treinador).build();
 	}
 
 }

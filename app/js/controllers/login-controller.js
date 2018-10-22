@@ -1,19 +1,26 @@
 angular.module('PokemonModule')
     .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$scope','$rootScope', '$location', 'Mensagens', 'TipoMensagem'];
+    LoginController.$inject = [
+        '$scope',
+        '$rootScope', 
+        '$location', 
+        'Mensagens', 
+        'TipoMensagem', 
+        'UserService'];
 
-function LoginController($scope, $rootScope, $location, Mensagens, TipoMensagem) {
+function LoginController($scope, $rootScope, $location, Mensagens, TipoMensagem, UserService) {
     
     var self = this;
-    
+    self.service = UserService;
+
     self.login = function(usuario) {
-        if (usuario.username !== 'david') {
-            $rootScope.addMensagem({texto: Mensagens.MENSAGEM_LOGIN_ERROR, tipo: TipoMensagem.ERROR}, true, true);
-        } else {
-            $rootScope.user = usuario;
-            $location.path('/listar');
-            $rootScope.addMensagem({texto: Mensagens.MENSAGEM_LOGIN_SUCESSO, tipo: TipoMensagem.SUCCESS}, true, true);
-        }
+        self.service.logar(usuario)
+            .then(function(response){
+                $rootScope.addMensagem({texto: Mensagens.MENSAGEM_LOGIN_SUCESSO, tipo: TipoMensagem.SUCCESS}, false, true);
+            },function(error){
+                $rootScope.addMensagem({texto:  Mensagens.MENSAGEM_LOGIN_ERROR, tipo: TipoMensagem.ERROR}, false, true);
+            });
+            //$rootScope.addMensagem({texto: Mensagens.MENSAGEM_LOGIN_ERROR, tipo: TipoMensagem.ERROR}, true, true);
     };
 }

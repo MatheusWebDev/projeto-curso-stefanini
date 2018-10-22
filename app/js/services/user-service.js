@@ -17,11 +17,16 @@ angular.module('PokemonModule')
         var _excluir = function(id) {
             return $http.delete('http://pokemon.bb.com.br/pokemon/rest/treinador/' + id);
         };
+
+        var _logar = function(usuario){
+            return $http.post('http://pokemon.bb.com.br/pokemon/rest/treinador/login', usuario);
+        };
         
         return {
             treinadores: _treinadores,
             cadastrar: _cadastrar,
             listar: _listar,
-            excluir: _excluir
+            excluir: _excluir,
+            logar: _logar
         };
     }

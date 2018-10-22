@@ -23,6 +23,11 @@ public class PokemonService extends ServiceBase {
 	
 	public PokemonDTO alterar(PokemonDTO dto) {
 		Pokemon pokemon = pokemonParserDTO.toEntity(dto);
+		
+		for(Pokemon t: baseDados.getPokemons()) {
+	
+		}
+		
 		return pokemonParserDTO.toDTO(pokemon);
 	}
 	

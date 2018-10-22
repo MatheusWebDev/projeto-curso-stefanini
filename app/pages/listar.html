@@ -14,6 +14,7 @@
                 <td><img ng-src="{{pokemon.avatar}}"></td>
                 <td ng-bind="pokemon.nome"></td>
                 <td>{{pokemon.descricaoTipo}} </td>
+                
                 <td class="text-center">{{pokemon.level}} </td>
                 <td class="text-center">
                     <pokemon-dropdown-menu id="{{'menu-' + $index}}">
@@ -22,6 +23,7 @@
                             data-target="#modal-exclusao" ng-click="vm.indexPokemonSelecionado = $index">Excluir</a>
                     </pokemon-dropdown-menu>
                 </td>
+               
             </tr>
         </tbody>
     </table>

@@ -5,9 +5,7 @@ PokemonService.$inject = ['$rootScope', '$http', 'Mensagens', 'TipoMensagem'];
 
 function PokemonService($rootScope, $http, Mensagens, TipoMensagem) {
     var _pokemons = [
-        /*{id: 1, nome: 'Bulbassaur', tipo: 3, level: 10},
-        {id: 2, nome: 'Squirtle', tipo: 2, level: 10},
-        {id: 3, nome: 'Charmander', tipo: 1, level: 10}*/
+      
     ];
 
     var _tipos = [{
@@ -26,13 +24,20 @@ function PokemonService($rootScope, $http, Mensagens, TipoMensagem) {
 
     var _pokemonSelecionado;
 
+    var _alterar = function (pokemon) {
+        return $http.put('http://pokemon.bb.com.br/pokemon/rest/pokemon', pokemon);
+    };
+    
     var _listar = function () {
         return $http.get('http://pokemon.bb.com.br/pokemon/rest/pokemon');
     };
+    
+    
 
     return {
         pokemons: _pokemons,
         tipos: _tipos,
+        alterar : _alterar,
         pokemonSelecionado: _pokemonSelecionado,
         listar: _listar
     };

@@ -18,8 +18,8 @@
                 <input class="form-control" ng-model="vm.pokemon.level" ng-required="true">
             </div>
             <div class="form-group">
-                <button class="btn btn-outline-success" type="submit" ng-if="!vm.pokemon.id">Cadastrar</button>
-                <button class="btn btn-outline-success" ng-if="vm.pokemon.id" ng-click="vm.alterar(vm.pokemon)">Alterar</button>
+                <button class="btn btn-outline-success" type="submit" ng-if="!vm.pokemon.index">Cadastrar</button>
+                <button class="btn btn-outline-success" ng-if="vm.pokemon.index" ng-click="vm.alterar(vm.pokemon)">Alterar</button>
                 <button class="btn btn-outline-danger" ng-click="vm.voltar()">Cancelar</button>
             </div>
         </form>

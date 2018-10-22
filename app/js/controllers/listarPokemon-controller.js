@@ -13,24 +13,24 @@ function ListarPokemonController($scope, $rootScope, $location, PokemonService, 
         self.listar();
     };
 
-    self.listar = function() {
+    self.listar = function () {
         self.service.listar()
-        .then(function(response) {
-            self.service.pokemons = response.data;
-           
-            self.service.pokemons.forEach(pokemon => {
-                self.setTipo(pokemon);
+            .then(function (response) {
+                self.service.pokemons = response.data;
+
+                self.service.pokemons.forEach(pokemon => {
+                    self.setTipo(pokemon);
+                });
+            }, function (error) {
+                $rootScope.addMensagem({ texto: error.mensagem, tipo: TipoMensagem.SUCCESS }, true, false);
             });
-        }, function(error) {
-            $rootScope.addMensagem({texto: error.mensagem, tipo: TipoMensagem.ERROR}, true, false);
-        });
     };
 
-    self.novoPokemon = function() {
+    self.novoPokemon = function () {
         $location.path("/cadastrar");
     };
 
-    self.editar = function(pokemon, index) {
+    self.editar = function (pokemon, index) {
         pokemon.index = index;
         self.service.pokemonSelecionado = pokemon;
         $location.path("/cadastrar");

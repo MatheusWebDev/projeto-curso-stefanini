@@ -11,8 +11,7 @@ public class PokemonParserDTO extends AbstractParser<PokemonDTO, Pokemon>{
 	@Override
 	public PokemonDTO toDTO(Pokemon entity) {
 //		TipoPokemonParserDTO tipoPokemonParser = new TipoPokemonParserDTO();
-		
-		PokemonDTO dto = new PokemonDTO();
+				PokemonDTO dto = new PokemonDTO();
 		dto.setAtaque(entity.getAtaque());
 		dto.setDefesa(entity.getDefesa());
 		dto.setId(entity.getId());

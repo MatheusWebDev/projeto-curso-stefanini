@@ -3,8 +3,11 @@ package com.stefanini.pokemon.dtos;
 import java.io.Serializable;
 import java.util.List;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import com.stefanini.pokemon.entities.TipoPokemon;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PokemonDTO implements Serializable {
 	/**
 	 * 

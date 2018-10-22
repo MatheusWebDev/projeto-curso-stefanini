@@ -14,15 +14,14 @@ public class PokemonFactory extends AbstractFactory<Pokemon> {
 		List<Pokemon> pokemons = new ArrayList<>();
 		
 		Pokemon pokemon1 = criar(Long.valueOf(pokemons.size()), "Bulbassaur", EnumTipoPokemon.PLANTA);
-		Pokemon pokemon2 = criar(Long.valueOf(pokemons.size()), "Squirtle", EnumTipoPokemon.AGUA);
-		Pokemon pokemon3 = criar(Long.valueOf(pokemons.size()), "Charmander", EnumTipoPokemon.FOGO);
-		Pokemon pokemon4 = criar(Long.valueOf(pokemons.size()), "Pikachu", EnumTipoPokemon.RAIO);
-		Pokemon pokemon5 = criar(Long.valueOf(pokemons.size()), "Pigey", EnumTipoPokemon.VOADOR, EnumTipoPokemon.NORMAL);
-
 		pokemons.add(pokemon1);
+		Pokemon pokemon2 = criar(Long.valueOf(pokemons.size()), "Squirtle", EnumTipoPokemon.AGUA);
 		pokemons.add(pokemon2);
+		Pokemon pokemon3 = criar(Long.valueOf(pokemons.size()), "Charmander", EnumTipoPokemon.FOGO);
 		pokemons.add(pokemon3);
+		Pokemon pokemon4 = criar(Long.valueOf(pokemons.size()), "Pikachu", EnumTipoPokemon.RAIO);
 		pokemons.add(pokemon4);
+		Pokemon pokemon5 = criar(Long.valueOf(pokemons.size()), "Pigey", EnumTipoPokemon.VOADOR, EnumTipoPokemon.NORMAL);
 		pokemons.add(pokemon5);
 		
 		return pokemons;

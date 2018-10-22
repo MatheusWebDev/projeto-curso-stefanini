@@ -14,16 +14,16 @@ public class TreinadorFactory extends AbstractFactory<Treinador> {
 		List<Treinador> treinadores = new ArrayList<>();
 		
 		Treinador treinador1 = criar(Long.valueOf(treinadores.size()), "Davide Viana", 		"david", 	"123", l);
-		Treinador treinador2 = criar(Long.valueOf(treinadores.size()), "Italo Bento", 		"italo", 	"124", l);
-		Treinador treinador3 = criar(Long.valueOf(treinadores.size()), "Leandro Ferreira", 	"leandro", 	"125", l);
-		Treinador treinador4 = criar(Long.valueOf(treinadores.size()), "Régis Bittencourt", "regis", 	"126", l);
-		Treinador treinador5 = criar(Long.valueOf(treinadores.size()), "Warley Moreira", 	"warley", 	"127", l);
-
 		treinadores.add(treinador1);
+		Treinador treinador2 = criar(Long.valueOf(treinadores.size()), "Italo Bento", 		"italo", 	"124", l);
 		treinadores.add(treinador2);
+		Treinador treinador3 = criar(Long.valueOf(treinadores.size()), "Leandro Ferreira", 	"leandro", 	"125", l);
 		treinadores.add(treinador3);
+		Treinador treinador4 = criar(Long.valueOf(treinadores.size()), "Régis Bittencourt", "regis", 	"126", l);
 		treinadores.add(treinador4);
+		Treinador treinador5 = criar(Long.valueOf(treinadores.size()), "Warley Moreira", 	"warley", 	"127", l);
 		treinadores.add(treinador5);
+
 		
 		return treinadores;
 	}

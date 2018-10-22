@@ -40,12 +40,12 @@ public class TreinadorService extends ServiceBase {
 		return treinadorParserDTO.toDTO(treinador);
 	}
 	
-	public void excluir(TreinadorDTO dto) {
+	public void excluir(TreinadorDTO dto) throws Exception {
 		excluir(dto.getId());
 	}
 	
-	public void excluir(Long id) {
-		//treinadorDAO.excluir(id);
+	public void excluir(Long id) throws Exception {
+		this.baseDados.deleteTreinador(id);
 	}
 	
 	public TreinadorDTO obter(Long id) {

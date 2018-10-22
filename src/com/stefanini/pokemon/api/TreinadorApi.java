@@ -37,7 +37,7 @@ public class TreinadorApi {
 
 	@DELETE
 	@Path("/{id}")
-	public Response deletar(@PathParam("id") Long id) {
+	public Response deletar(@PathParam("id") Long id) throws Exception {
 		treinadorService.excluir(id);
 		return Response.ok().build();
 	}

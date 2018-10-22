@@ -7,6 +7,7 @@ function CadastrarTreinadorController($rootScope, $location, UserService, Mensag
     var self = this;
 
     self.service = UserService;
+    self.treinador = self.service.treinadorSelecionado || {};
 
     self.cadastrar = function (treinador) {
         treinador.id = self.service.treinadores.length + 1;

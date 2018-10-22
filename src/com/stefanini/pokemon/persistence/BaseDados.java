@@ -49,4 +49,16 @@ public class BaseDados {
 	public void addTreinador(Treinador treinador) {
 		treinadores.add(treinador);
 	}
+
+	public void deleteTreinador(Long id) throws Exception {
+		for(Treinador treinador : this.treinadores) {
+			if(treinador.getId().equals(id)) {
+				this.treinadores.remove(treinador);
+				return;
+			}
+		}
+		
+		throw new Exception("Treinador não encontrado");
+		
+	}
 }

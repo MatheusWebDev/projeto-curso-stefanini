@@ -46,16 +46,15 @@ public class PokemonFactory extends AbstractFactory<Pokemon> {
 	}
 	
 	private TipoPokemon criar(EnumTipoPokemon eTipoPokemon) {
-		TipoPokemon tipoPokemon = new TipoPokemon();
-		tipoPokemon.setId(Long.valueOf(eTipoPokemon.getCodigo()));
-		tipoPokemon.setNome(eTipoPokemon.getDescricao());
+		TipoPokemon tipoPokemon = new TipoPokemon(null, null);
+		tipoPokemon.setId(Integer.valueOf(eTipoPokemon.getCodigo()));
+		tipoPokemon.setDescricao(eTipoPokemon.getDescricao());
 		
 		return tipoPokemon;
 	}
 
 	@Override
 	List<Pokemon> gerar(List l) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

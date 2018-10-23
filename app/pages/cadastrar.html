@@ -1,4 +1,4 @@
-<div class="row mTop5">
+<div class="row mTop5" ng-init="vm.init()">
     <div class="col">
         <form ng-submit="vm.cadastrar(vm.pokemon)">
             <div class="form-group">
@@ -8,7 +8,7 @@
             <div class="form-group">
                 <label>Tipo</label>
                 <select class="form-control" ng-model="vm.pokemon.tipo" ng-change="vm.loading()" 
-                    ng-options="tipo.codigo as tipo.descricao for tipo in vm.service.tipos"
+                    ng-options="tipo as tipo.descricao for tipo in vm.tipos"
                     ng-required="true">
                     <option value="">Selecione</option>
                 </select>

@@ -15,12 +15,16 @@ function ListarPokemonController($scope, $rootScope, $location, PokemonService, 
 
     self.listar = function () {
         self.service.listar()
-            .then(function (response) {
-                self.service.pokemons = response.data;
-                
-            }, function (error) {
-                $rootScope.addMensagem({ texto: error.mensagem, tipo: TipoMensagem.SUCCESS }, true, false);
+        .then(function(response) {
+            self.service.pokemons = response.data;
+            
+            self.service.pokemons.forEach(pokemon => {
+                self.setTipo(pokemon);            
             });
+
+        }, function(error) {
+            $rootScope.addMensagem({texto: error.mensagem, tipo: TipoMensagem.SUCCESS}, true, false);
+        });
     };
 
     self.novoPokemon = function () {
@@ -33,10 +37,20 @@ function ListarPokemonController($scope, $rootScope, $location, PokemonService, 
         $location.path("/cadastrar");
     };
 
-    self.excluir = function (index) {
-        self.service.pokemons.splice(index, 1);
-        $rootScope.limparMensagens();
-        $rootScope.addMensagem({ texto: Mensagens.MENSAGEM_EXCLUIR_SUCESSO, tipo: TipoMensagem.SUCCESS }, false, true);
+    self.setTipo = function (pokemon) {
+        self.service.tipos.forEach(tipo => {
+            if (pokemon.tipos.id === tipo.id) {
+                pokemon.tipos.descricao = tipo.descricao;
+            }
+        });
+    };
+
+    self.excluir = function (indexPokemonSelecionado) {
+        if(self.service.remover(indexPokemonSelecionado)) { 
+            self.service.pokemons.splice(indexPokemonSelecionado, 1);
+            $rootScope.limparMensagens();
+            $rootScope.addMensagem({ texto: Mensagens.MENSAGEM_EXCLUIR_SUCESSO, tipo: TipoMensagem.SUCCESS }, false, true);
+        }
     };
 
 }

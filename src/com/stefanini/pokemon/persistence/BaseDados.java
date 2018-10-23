@@ -37,7 +37,11 @@ public class BaseDados {
 	public void setPokemons(List<Pokemon> pokemons) {
 		this.pokemons = pokemons;
 	}
-
+	
+	public void addPokemon(Pokemon pokemon) {
+		pokemons.add(pokemon);
+	}
+	
 	public List<Treinador> getTreinadores() {
 		return treinadores;
 	}

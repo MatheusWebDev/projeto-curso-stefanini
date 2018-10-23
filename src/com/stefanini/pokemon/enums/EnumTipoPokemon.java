@@ -1,5 +1,11 @@
 package com.stefanini.pokemon.enums;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.stefanini.pokemon.dtos.TipoPokemonDTO;
+import com.stefanini.pokemon.entities.TipoPokemon;
+
 public enum EnumTipoPokemon {
 
 	FOGO 	(1, "Fogo"),
@@ -29,5 +35,22 @@ public enum EnumTipoPokemon {
 	public String getDescricao() {
 		return descricao;
 	}
+	
+	public List<TipoPokemon> getTipos() {
+		List<TipoPokemon> tipos = new ArrayList<>();
+		for (EnumTipoPokemon eTipoPokemon : EnumTipoPokemon.values()) {
+			tipos.add(new TipoPokemon(eTipoPokemon.getCodigo(), eTipoPokemon.getDescricao()));
+		}
+		return tipos;
+	}
+	
+	private TipoPokemon criar(EnumTipoPokemon eTipoPokemon) {
+		TipoPokemon tipoPokemon = new TipoPokemon(codigo, descricao);
+		tipoPokemon.setId(Integer.valueOf(eTipoPokemon.getCodigo()));
+		tipoPokemon.setDescricao(eTipoPokemon.getDescricao());
+		
+		return tipoPokemon;
+	}
+	
 	
 }

@@ -11,7 +11,7 @@ public class TipoPokemonParserDTO extends AbstractParser<TipoPokemonDTO, TipoPok
 			return null;
 		}
 		TipoPokemonDTO tipoDto = new TipoPokemonDTO();
-		tipoDto.setDescricao(entity.getNome());
+		tipoDto.setDescricao(entity.getDescricao());
 		tipoDto.setId(entity.getId());
 		return tipoDto;
 	}
@@ -21,8 +21,8 @@ public class TipoPokemonParserDTO extends AbstractParser<TipoPokemonDTO, TipoPok
 		if (dto == null) {
 			return null;
 		}
-		TipoPokemon tipo = new TipoPokemon();
-		tipo.setNome(dto.getDescricao());
+		TipoPokemon tipo = new TipoPokemon(null, null);
+		tipo.setDescricao(dto.getDescricao());
 		tipo.setId(dto.getId());
 		return tipo;
 	}

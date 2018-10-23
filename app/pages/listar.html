@@ -13,7 +13,7 @@
                 <td class="text-center" ng-bind="pokemon.id"></td>
                 <td><img ng-src="{{pokemon.avatar}}"></td>
                 <td ng-bind="pokemon.nome"></td>
-                <td><spam ng-repeat="tipo in pokemon.tipos">{{tipo.nome}} </spam></td>                	
+                <td><spam ng-repeat="tipo in pokemon.tipos">{{tipo.descricao}} </spam></td>                	
                 <td class="text-center">{{pokemon.level}}</td>
                 <td class="text-center">
                     <pokemon-dropdown-menu id="{{'menu-' + $index}}">

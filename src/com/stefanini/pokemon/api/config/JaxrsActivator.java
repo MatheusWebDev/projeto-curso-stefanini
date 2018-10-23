@@ -19,6 +19,7 @@ public class JaxrsActivator extends Application {
 		Log.info("Registrando resources...");
 		classes.add(PokemonApi.class);
 		classes.add(TreinadorApi.class);
+		//add Tipos API
 		Log.info("Resources registrados com sucesso...");
 	}
 	

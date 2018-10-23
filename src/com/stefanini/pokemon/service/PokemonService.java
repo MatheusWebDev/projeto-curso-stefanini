@@ -21,11 +21,15 @@ public class PokemonService extends ServiceBase {
 		return dto;
 	}
 	
-	public PokemonDTO alterar(PokemonDTO dto) {
+	public PokemonDTO alterar(PokemonDTO dto) throws Exception {
 		Pokemon pokemon = pokemonParserDTO.toEntity(dto);
 		
 		for(Pokemon t: baseDados.getPokemons()) {
-	
+			if(t.getId().equals(pokemon.getId())) {
+				baseDados.deletePokemon(t);
+				baseDados.addPokemon(pokemon);
+				break;
+			}
 		}
 		
 		return pokemonParserDTO.toDTO(pokemon);

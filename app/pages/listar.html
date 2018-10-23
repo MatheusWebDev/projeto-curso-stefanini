@@ -9,13 +9,12 @@
             <th class="text-center">Opções</th>
         </thead>
         <tbody>
-            <tr ng-repeat="pokemon in vm.service.pokemons | limitTo: 150 track by $index">
+            <tr ng-repeat="pokemon in vm.service.pokemons |  orderBy:'id' | limitTo: 150 track by $index">
                 <td class="text-center" ng-bind="pokemon.id"></td>
                 <td><img ng-src="{{pokemon.avatar}}"></td>
                 <td ng-bind="pokemon.nome"></td>
-                <td>{{pokemon.descricaoTipo}} </td>
-                
-                <td class="text-center">{{pokemon.level}} </td>
+                <td><spam ng-repeat="tipo in pokemon.tipos">{{tipo.nome}} </spam></td>                	
+                <td class="text-center">{{pokemon.level}}</td>
                 <td class="text-center">
                     <pokemon-dropdown-menu id="{{'menu-' + $index}}">
                         <a class="dropdown-item" href="" ng-click="vm.editar(pokemon, $index)">Editar</a>
@@ -27,6 +26,7 @@
             </tr>
         </tbody>
     </table>
+
 </div>
 <div class="row">
     <button class="btn btn-outline-primary" ng-click="vm.novoPokemon()">[+] Adicionar Pokemon</button>

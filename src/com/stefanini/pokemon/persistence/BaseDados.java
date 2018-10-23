@@ -53,4 +53,13 @@ public class BaseDados {
 	public void deleteTreinador(Treinador treinador) throws Exception {
 		this.treinadores.remove(treinador);
 	}
+
+	public void addPokemon (Pokemon pokemon) {
+		this.pokemons.add(pokemon);
+	}
+	
+	public void deletePokemon(Pokemon pokemon) throws Exception {
+		this.pokemons.remove(pokemon);
+	}
+
 }

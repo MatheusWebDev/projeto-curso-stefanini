@@ -26,7 +26,7 @@ public class PokemonApi {
 	}
 	
 	@PUT
-	public Response alterar(PokemonDTO pokemon) {
+	public Response alterar(PokemonDTO pokemon) throws Exception {
 		PokemonDTO pokemonDTO = pokemonService.alterar(pokemon);
 		return Response.ok(pokemonDTO).build();
 	}

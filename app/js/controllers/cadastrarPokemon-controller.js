@@ -28,22 +28,15 @@ function CadastrarPokemonController($scope, $location, $rootScope, PokemonServic
 
 
     self.alterar = function (pokemon) {
-        var index = pokemon.index;
-        delete pokemon.index;
 
-        console.log(pokemon);
-        self.service.alterar(pokemon)
+    	self.service.alterar(pokemon)
             .then(function (response) {
-                console.log("Alterando");
+            	$rootScope.addMensagem({ texto: Mensagens.MENSAGEM_ALTERAR_SUCESSO, tipo: TipoMensagem.SUCCESS} , false, true);
+            	self.voltar();
             }, function (error) {
-                console.log("Erro ao alterar");
+            	console.log("Error");
+            	$rootScope.addMensagem({ texto: Mensagens.MENSAGEM_ALTERAR_ERROR, tipo: TipoMensagem.ERROR} , false, true);
             });
-
-        self.service.pokemons.splice(index, 1, pokemon);
-        self.service.pokemonSelecionado = null;
-        
-        $rootScope.addMensagem({ texto: 'Pokemon alterado com sucesso', tipo: TipoMensagem.SUCCESS });
-        self.voltar();
     };
 
     self.voltar = function () {

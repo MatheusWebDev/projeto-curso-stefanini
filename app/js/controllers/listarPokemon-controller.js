@@ -17,10 +17,7 @@ function ListarPokemonController($scope, $rootScope, $location, PokemonService, 
         self.service.listar()
             .then(function (response) {
                 self.service.pokemons = response.data;
-
-                self.service.pokemons.forEach(pokemon => {
-                    self.setTipo(pokemon);
-                });
+                
             }, function (error) {
                 $rootScope.addMensagem({ texto: error.mensagem, tipo: TipoMensagem.SUCCESS }, true, false);
             });
@@ -34,14 +31,6 @@ function ListarPokemonController($scope, $rootScope, $location, PokemonService, 
         pokemon.index = index;
         self.service.pokemonSelecionado = pokemon;
         $location.path("/cadastrar");
-    };
-
-    self.setTipo = function (pokemon) {
-        self.service.tipos.forEach(tipo => {
-            if (pokemon.tipo === tipo.codigo) {
-                pokemon.descricaoTipo = tipo.descricao;
-            }
-        });
     };
 
     self.excluir = function (index) {

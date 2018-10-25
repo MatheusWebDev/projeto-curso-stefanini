@@ -1,18 +1,25 @@
 package com.stefanini.pokemon.entities;
 
-public class Usuario extends EntityBase {
+import java.io.Serializable;
 
-	/**
-	 * 
-	 */
+public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
-	
 	private String email;
-	
 	private String senha;
 	
+	
+	public Usuario(String email, String senha) {
+		this.email = email;
+		this.senha = senha;
+	}
+	public Usuario(Long id, String email, String senha) {
+		this.id = id;
+		this.email = email;
+		this.senha = senha;
+	}
+	public Usuario() {}
 	public Long getId() {
 		return id;
 	}
@@ -32,4 +39,5 @@ public class Usuario extends EntityBase {
 		this.email = email;
 	}
 	
+
 }

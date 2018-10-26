@@ -3,8 +3,10 @@ package com.stefanini.pokemon.exception;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
+import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.ext.ExceptionMapper;
 
 public class GenericExceptionMapper implements ExceptionMapper<Exception>{
@@ -13,8 +15,13 @@ public class GenericExceptionMapper implements ExceptionMapper<Exception>{
 	@Override
 	public Response toResponse(Exception exception) {
 		Mensagem mensagem = new Mensagem();
+		Integer status = 500;
 		
-		mensagem.setStatus(STATUS);
+		if(exception instanceof NotAuthorizedException) {
+			status = Status.UNAUTHORIZED.getStatusCode();
+		}
+		
+		mensagem.setStatus(status);
 		mensagem.setMensagem(exception.getMessage());
 		mensagem.setTipo("ERROR");
 		

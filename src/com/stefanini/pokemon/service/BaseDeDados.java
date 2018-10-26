@@ -31,12 +31,20 @@ public class BaseDeDados {
 		listaUsuarios.add(user);
 	}
 
-	public void deletar(Usuario user) {
-		listaUsuarios.remove(user);
+	public void deletar(Long id) {
+		listaUsuarios.remove(obter(id));
 	}
 	
 	public Set<Usuario> listar(){
 		return listaUsuarios;
 	}
-
+	
+	public boolean checarEmailSenha(String email, String senha) {
+		for (Usuario user : listaUsuarios) {
+			if(user.getEmail().equals(email) && user.getSenha().equals(senha)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

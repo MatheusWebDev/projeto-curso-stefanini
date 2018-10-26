@@ -3,6 +3,7 @@ package com.stefanini.pokemon.parsers;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import com.stefanini.pokemon.entities.EntityBase;
 
@@ -12,6 +13,16 @@ public abstract class AbstractParser<DTO extends Serializable, ENTITY extends En
 	abstract ENTITY toEntity(DTO dto);
 	
 	public List<DTO> toDTO(List<ENTITY> entities) {
+		List<DTO> dtos = new ArrayList<>();
+		
+		for (ENTITY entity : entities) {
+			dtos.add(toDTO(entity));
+		}
+		
+		return dtos;
+	}
+	
+	public List<DTO> toDTO(Set<ENTITY> entities) {
 		List<DTO> dtos = new ArrayList<>();
 		
 		for (ENTITY entity : entities) {

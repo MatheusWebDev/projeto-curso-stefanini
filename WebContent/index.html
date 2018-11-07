@@ -12,15 +12,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
 
-    <!--<script>
-        angular.module("pokemonApp", [])
-            .controller("pokemonController", ["$scope", "$rootScott", function($scope, $rootScope) {
-                scope.mensagem = "Olá Mundo Pokemon!";
-                scope.inserir = function (msg) {
-                    scope.mensagem += msg;
-                };
-            }]);
-    </script>-->
     <script>
         angular.module("pokemonApp", []);
 
@@ -29,14 +20,36 @@
             pokemonController.$inject = ["$scope", "$rootScope"];
 
             function pokemonController ($scope, $rootScope) {
+                $scope.tiposPokemons = [
+                    {cod: 1, descricao: "Raio"},
+                    {cod: 2, descricao: "Fogo"},
+                    {cod: 3, descricao: "Agua"},
+                    {cod: 3, descricao: "Grama"},
+                    {cod: 3, descricao: "Terrestre"},
+                    {cod: 4, descricao: "Eletrico"}
+                ];
                 $scope.listaPokemons = [];
                 $scope.pokemon = {};
+                $scope.showForm = false;
+
                 $scope.inserir = function (pokemon) {
-                    $scope.listaPokemons.push(angular.copy(pokemon));
-                    $scope.pokemon = {};
-                    //delete $scope.pokemon;
+                    if ($scope.indexSelecionado != null && !angular.isUndefined($scope.indexSelecionado)){
+                        $scope.listaPokemons.splice($scope.indexSelecionado, 1, pokemon)
+                    } else {
+                        $scope.listaPokemons.push(angular.copy(pokemon));
+                    }
                 };
-                $scope.texto = null;
+
+                $scope.deletar = function (index) {
+                    $scope.listaPokemons.splice(index, 1);
+                }
+
+                $scope.editar = function (index, pokemon) {
+                    $scope.indexSelecionado = index;
+                    $scope.pokemon = angular.copy(pokemon);
+                    $scope.showForm = true;
+                    $scope.inserir($scope.pokemon);
+                }
             };
     </script>
 </head>
@@ -45,33 +58,47 @@
     <div class="container">
         <div class="jumbotron">
             <h2 class="text-center">Lista de Pokemons</h2>
-            <form class="mt-3 w-50 mx-auto" ng-submit="inserir(pokemon)">
+            <form ng-show="showForm" class="mt-3 w-50 mx-auto" ng-submit="inserir(pokemon)">
                 <div class="form-group">
                     <label for="nome" class="h6 mr-3">Nome: </label>
-                    <input type="text" name="nome" ng-model="pokemon.nome" class="form-control">
+                    <input type="text" name="nome" ng-model="pokemon.nome" ng-required="true" class="form-control">
                 </div>
                 <div class="form-group">
-                    <label for="tipo" class="h6">Tipo: </label>
-                    <input type="text" name="tipo" ng-model="pokemon.tipo" class="form-control">
+                    <label for="tipoPokemon">Tipo: </label>
+                    <select class="form-control" ng-model="pokemon.tipo" ng-required="true" ng-options="tipo.descricao for tipo in tiposPokemons" id="tipoPokemon">
+                        <option value="">Selecione um tipo</option>
+                    </select>
                 </div>
-                <button type="submit" class="btn btn-info btn-sm ml-3">INSERIR</button>
+                <button type="submit" class="btn btn-info btn-block" ng-click="showForm = !showForm">Salvar</button>
             </form>
-            <table class="table mt-3 bg-white w-50 mx-auto" ng-show="listaPokemons.length">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Pokemon</th>
-                        <th scope="col">Tipo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="pokemon in listaPokemons track by $index">
-                        <td>{{$index+1}}</td>
-                        <td>{{pokemon.nome}}</td>
-                        <td>{{pokemon.tipo}}</td>
-                    </tr>
-                </tbody>
-            </table>
+
+            <h4 class="text-center text-danger" ng-hide="listaPokemons.length || showForm">Nenhum pokemon encontrado!</h4>
+            <div ng-show="!showForm">
+                <table class="table mt-3 bg-white w-50 mx-auto" ng-show="listaPokemons.length">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Pokemon</th>
+                            <th scope="col">Tipo</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="pokemon in listaPokemons track by $index">
+                            <td>{{$index+1}}</td>
+                            <td>{{pokemon.nome}}</td>
+                            <td>{{pokemon.tipo.descricao}}</td>
+                            <td><button class="btn btn-warning btn-sm" ng-click="editar($index, pokemon)">1</button></td>
+                            <td><button class="btn btn-danger btn-sm" ng-click="deletar($index)">X</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+    
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-info text-center" ng-click="showForm = !showForm">Inserir</button>
+                </div>
+            </div>
         </div>
     </div>
 

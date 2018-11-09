@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="pokemonApp">
+
+<head>
+   <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <title>Pokemon App</title>
+
+   <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+   <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+
+   <script src="./node_modules/angular/angular.min.js"></script>
+   <script src="./node_modules/angular-route/angular-route.min.js"></script>
+   
+   <!-- DESENVOLVIMENTO -->
+   <script src="//localhost:35729/livereload.js"></script>
+   <link rel="stylesheet" href="./app/css/app.css">
+   <script src="./app/js/app.js"></script>
+   <script src="./app/js/services/pokemon.service.js"></script>
+   <script src="./app/js/controllers/cadastrarPokemon.controller.js"></script>
+   <script src="./app/js/controllers/listarPokemon.controller.js"></script>
+
+   <!-- PRODUÇÃO -->
+   <!-- <link rel="stylesheet" href="./css/style.min.css">
+   <script src="./js/build.min.js"></script> -->
+
+</head>
+
+<body>
+   <div class="container">
+      <div class="jumbotron">
+         <h2 class="text-center">Lista de Pokemons</h2>
+         <ng-view></ng-view>
+      </div>
+   </div>
+
+   <!-- Optional JavaScript -->
+   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+   <script src="./node_modules/popper.js/dist/popper.min.js"></script>
+   <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

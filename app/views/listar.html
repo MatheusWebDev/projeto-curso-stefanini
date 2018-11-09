@@ -1,6 +1,6 @@
-<h4 class="text-center text-danger" ng-hide="listaPokemons.length || showForm">Nenhum pokemon encontrado!</h4>
-<div ng-show="!showForm">
-   <table class="table mt-3 bg-white w-50 mx-auto" ng-show="listaPokemons.length">
+<div ng-controller="listarPokemonController">
+   <h4 class="text-center text-danger" ng-hide="service.listaPokemons.length">Nenhum pokemon encontrado!</h4>
+   <table class="table mt-3 bg-white w-50 mx-auto" ng-show="service.listaPokemons.length">
       <thead class="thead-dark">
          <tr>
             <th scope="col">#</th>
@@ -10,7 +10,7 @@
          </tr>
       </thead>
       <tbody>
-         <tr ng-repeat="pokemon in listaPokemons track by $index">
+         <tr ng-repeat="pokemon in service.listaPokemons track by $index">
             <td>{{pokemon.id}}</td>
             <td>{{pokemon.nome}}</td>
             <td class="text-center">{{pokemon.tipo.descricao}}</td>
@@ -27,6 +27,6 @@
    </table>
 
    <div class="d-flex justify-content-center">
-      <button class="btn btn-info text-center" ng-click="showForm = !showForm">Inserir</button>
+      <button class="btn btn-info text-center" ng-click="cadastrar()">Inserir</button>
    </div>
 </div>

@@ -6,9 +6,6 @@ function pokemonController ($scope, $rootScope, $location, pokemonService) {
    $scope.contadorId = 0;
    $scope.service = pokemonService;
    $scope.pokemon = $scope.service.pokemon; // para nao duplicar -> utilizar service direto
-   $scope.service.tiposPokemons = 
-
-   $scope.pokemon = {};
 
    $scope.inserir = function (pokemon) {
       if (pokemon.id){

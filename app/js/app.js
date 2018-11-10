@@ -8,14 +8,16 @@ config.$inject = ["$routeProvider"];
 function config($routeProvider) {
    $routeProvider
       .when("/login", {
-         templateUrl: "/app/views/login.html",
+         templateUrl: "/app/views/login.html"
+        // controller: "loginController"
       })
       .when("/listar", {
          templateUrl: "/app/views/listar.html",
+         controller: "listarPokemonController"
       })
       .when("/cadastrar", {
          templateUrl: "/app/views/cadastrar.html",
-         controller: "cadastrarPokemonController as cadastrarPokemon"
+         controller: "cadastrarPokemonController"
       })
       .otherwise({
          redirectTo: "/login"
@@ -23,11 +25,11 @@ function config($routeProvider) {
 }
 
 function run($rootScope, $location) {
-   $rootScope.$on("$routeChangeStart", function(e, route) {
-      if (route.originalPath !== "/login"){
-         if(!$rootScope.usuario) {
-            $location.path("/login");
-         }
-      }
-   });
+   // $rootScope.$on("$routeChangeStart", function(e, route) {
+   //    if (route.originalPath !== "/login"){
+   //       if(!$rootScope.usuario) {
+   //          $location.path("/login");
+   //       }
+   //    }
+   // });
 }

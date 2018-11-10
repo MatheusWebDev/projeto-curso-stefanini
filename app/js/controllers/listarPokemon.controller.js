@@ -10,10 +10,13 @@ function listarPokemonController ($scope, $rootScope, pokemonService, $location)
       $scope.service.listaPokemons.splice(index, 1);
    };
 
-   $scope.cadastrar = function() {
+   $scope.cadastrar = function () {
       $scope.service.pokemon = pokemon;
       $location.path("/cadastrar");
-   }
+   };
 
-   $scope.editar
+   $scope.editar = function () {
+      $scope.service.pokemon = pokemon;
+      $scope.irTelaCadastrar();
+   };
 }

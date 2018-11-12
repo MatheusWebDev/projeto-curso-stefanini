@@ -16,6 +16,10 @@ function abstractController($scope, $rootScope, $location) {
       $location.path("/login");
    };
 
+   $scope.loginOk = function () {
+      
+   };
+
    $scope.go = function ( path ) {
       $location.path( path );
    };

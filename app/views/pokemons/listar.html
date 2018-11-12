@@ -1,33 +1,39 @@
-<h2 ng-show="service.listaPokemons.length" class="text-center">Todos os Pokemons</h2>
-<h4 class="text-center text-danger" ng-hide="service.listaPokemons.length">Nenhum pokemon encontrado!</h4>
-<table class="table mt-3 bg-white w-50 mx-auto" ng-show="service.listaPokemons.length">
-   <thead class="thead-dark">
-      <tr>
-         <th scope="col">#</th>
-         <th scope="col">Pokemon</th>
-         <th class="text-center" scope="col">Tipo</th>
-         <th scope="col">Treinador</th>
-         <th></th>
-      </tr>
-   </thead>
-   <tbody>
-      <tr ng-repeat="pokemon in service.listaPokemons track by $index">
-         <td>{{pokemon.id}}</td>
-         <td>{{pokemon.nome}}</td>
-         <td class="text-center">{{pokemon.tipo.descricao}}</td>
-         <td>{{pokemon.treinador}}</td>
-         <td class="text-right">
-            <button class="btn btn-primary btn-sm mr-2" ng-click="editar(pokemon)">
-               <i class="far fa-edit"></i>
-            </button>
-            <button class="btn btn-danger btn-sm" ng-click="deletar($index)">
-               <i class="far fa-trash-alt"></i>
-            </button>
-         </td>
-      </tr>
-   </tbody>
-</table>
+<div>
+   <h2 ng-show="lisPoke.service.listaPokemons.length" class="text-center">Todos os Pokemons</h2>
+   <h4 class="text-center text-danger" ng-hide="lisPoke.service.listaPokemons.length">Nenhum pokemon encontrado!</h4>
+   <table class="table mt-3 bg-white w-50 mx-auto" ng-show="lisPoke.service.listaPokemons.length">
+      <thead class="thead-dark">
+         <tr>
+            <th scope="col">#</th>
+            <th scope="col">Pokemon</th>
+            <th class="text-center" scope="col">Tipo</th>
+            <th scope="col">Treinador</th>
+            <th></th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr ng-repeat="pokemon in lisPoke.service.listaPokemons track by $index">
+            <td>{{pokemon.id}}</td>
+            <td>{{pokemon.nome}}</td>
+            <td class="text-center">{{pokemon.tipo.descricao}}</td>
+            <td>{{pokemon.treinador}}</td>
+            <td class="text-right">
+               <button class="btn btn-primary btn-sm mr-2" ng-click="lisPoke.editar(pokemon)">
+                  <i class="far fa-edit"></i>
+               </button>
+               <button class="btn btn-danger btn-sm" role="button" data-toggle="modal" data-target="#modal-excluir-pokemon" ng-click="indexSelecionado = $index">
+                  <i class="far fa-trash-alt"></i>
+               </button>
+            </td>
+         </tr>
+      </tbody>
+   </table>
 
-<div class="d-flex justify-content-center">
-   <button class="btn btn-info text-center" ng-click="irTelaCadastrar()">Inserir</button>
+   <div class="d-flex justify-content-center">
+      <button class="btn btn-info text-center" ng-click="lisPoke.irTelaCadastrar()">Inserir</button>
+   </div>
+
+   <pokemon-modal id-modal="modal-excluir-pokemon" titulo-modal="Confirmação de Exclusão" tamanho="modal-sm" callback-confirmar="lisPoke.excluir(lisPoke.indexSelecionado)">
+      <strong>Deseja realmente excluir esse pokemon ?</strong>
+   </pokemo-modal>
 </div>

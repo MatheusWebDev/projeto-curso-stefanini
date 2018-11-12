@@ -3,28 +3,30 @@ angular.module("pokemonApp").controller("listarPokemonController", listarPokemon
 listarPokemonController.$inject = ["$scope", "$rootScope", "$location", "pokemonService", "treinadorService"];
 
 function listarPokemonController ($scope, $rootScope, $location, pokemonService, treinadorService) {
-   $scope.service = pokemonService;
-   $scope.treinadorService = treinadorService;
+   var self = this;
+   self.service = pokemonService;
+   self.treinadorService = treinadorService;
+   self.indexSelecionado= null;
    
-   $scope.deletar = function (index) {
-      var pokeDel = $scope.service.listaPokemons[index];
+   self.deletar = function (index) {
+      var pokeDel = self.service.listaPokemons[index];
       if (pokeDel.treinador != "Selvagem") {
-         $scope.treinadorService.listaTreinadores = $scope.treinadorService.listaTreinadores.map(function(trein) {
+         self.treinadorService.listaTreinadores = self.treinadorService.listaTreinadores.map(function(trein) {
             if (trein.nome === pokeDel.treinador) {
                trein.pokemon = {nome: "Nenhum"};
             }
             return trein;
          });
       }
-      $scope.service.listaPokemons.splice(index, 1);
+      self.service.listaPokemons.splice(index, 1);
    };
 
-   $scope.irTelaCadastrar = function () {
+   self.irTelaCadastrar = function () {
       $location.path("/pokemons/cadastrar");
    };
 
-   $scope.editar = function (pokemon) {
-      $scope.service.pokemon = pokemon;
-      $scope.irTelaCadastrar();
+   self.editar = function (pokemon) {
+      self.service.pokemon = pokemon;
+      self.irTelaCadastrar();
    };
 }

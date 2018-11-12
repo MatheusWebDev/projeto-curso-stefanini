@@ -15,6 +15,16 @@ function treinadorService() {
             id: 1, nome: "Pikachu",
             tipo: { cod: 5, descricao: "Eletrico" }
          }
+      },
+      {
+         id: 2,
+         nome: "Teste",
+         senha: "123",
+         cidade: { cod: 1, nome: "Pallet Town" },
+         pokemon: {
+            id: 2, nome: "Bulbasaur",
+            tipo: {cod: 3, descricao: "Grama"}
+         }
       }
    ];
    var _listaCidades = [

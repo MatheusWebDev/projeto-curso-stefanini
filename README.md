@@ -25,3 +25,5 @@ inserir os pokemons com treinador OK
 tela de login [dados fixos, dados do usuario ficar dentro do rootScope]
 navegação OK
 
+O'Reilly - Desenvolvendo com AngularJS
+

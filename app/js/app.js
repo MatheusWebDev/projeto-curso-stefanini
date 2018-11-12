@@ -13,19 +13,19 @@ function config($routeProvider) {
       })
       .when("/treinador/listar", {
          templateUrl: "/app/views/treinador/listar.html",
-         controller: "listarTreinadorController as listarTreinador"
+         controller: "listarTreinadorController as lisTrein"
       })
       .when("/treinador/cadastrar", {
          templateUrl: "/app/views/treinador/cadastrar.html",
-         controller: "cadastrarTreinadorController as cadastrarTreinador"
+         controller: "cadastrarTreinadorController as cadTrein"
       })
       .when("/pokemons/listar", {
          templateUrl: "/app/views/pokemons/listar.html",
-         controller: "listarPokemonController as listarPokemons"
+         controller: "listarPokemonController as lisPoke"
       })
       .when("/pokemons/cadastrar", {
          templateUrl: "/app/views/pokemons/cadastrar.html",
-         controller: "cadastrarPokemonController as cadastrarPokemons"
+         controller: "cadastrarPokemonController as cadPoke"
       })
       .otherwise({
          redirectTo: "/login"

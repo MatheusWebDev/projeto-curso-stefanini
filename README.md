@@ -23,5 +23,5 @@
 crud treinador
 inserir os pokemons com treinador
 tela de login [dados fixos, dados do usuario ficar dentro do rootScope]
-navegação
+navegação OK
 

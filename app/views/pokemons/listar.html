@@ -1,3 +1,4 @@
+<h2 ng-show="service.listaPokemons.length" class="text-center">Todos os Pokemons</h2>
 <h4 class="text-center text-danger" ng-hide="service.listaPokemons.length">Nenhum pokemon encontrado!</h4>
 <table class="table mt-3 bg-white w-50 mx-auto" ng-show="service.listaPokemons.length">
    <thead class="thead-dark">
@@ -5,6 +6,7 @@
          <th scope="col">#</th>
          <th scope="col">Pokemon</th>
          <th class="text-center" scope="col">Tipo</th>
+         <th scope="col">Treinador</th>
          <th></th>
       </tr>
    </thead>
@@ -13,6 +15,7 @@
          <td>{{pokemon.id}}</td>
          <td>{{pokemon.nome}}</td>
          <td class="text-center">{{pokemon.tipo.descricao}}</td>
+         <td>{{pokemon.treinador}}</td>
          <td class="text-right">
             <button class="btn btn-primary btn-sm mr-2" ng-click="editar(pokemon)">
                <i class="far fa-edit"></i>
@@ -26,5 +29,5 @@
 </table>
 
 <div class="d-flex justify-content-center">
-   <button class="btn btn-info text-center" ng-click="cadastrar()">Inserir</button>
+   <button class="btn btn-info text-center" ng-click="irTelaCadastrar()">Inserir</button>
 </div>

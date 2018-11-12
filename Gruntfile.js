@@ -41,10 +41,12 @@ module.exports = function (grunt) {
          dev: {
             expand: true,
             src: [
-               "node_modules/angular/angular.min.js",
-               "node_modules/angular-route/angular-route.min.js",
-               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-               "node_modules/bootstrap/dist/js/bootstrap.min.js",
+               "node_modules/angular/angular.js",
+               "node_modules/angular-route/angular-route.js",
+               "node_modules/bootstrap/dist/css/bootstrap.css",
+               "node_modules/bootstrap/dist/css/bootstrap.css.map",
+               "node_modules/bootstrap/dist/js/bootstrap.js",
+               "node_modules/bootstrap/dist/js/bootstrap.js.map",
                "node_modules/jquery/dist/jquery.min.js",
                "node_modules/popper.js/dist/popper.min.js",
                "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
@@ -106,4 +108,4 @@ module.exports = function (grunt) {
    grunt.registerTask("default", ["jshint", "clean", "copy:dev", "connect", "watch:dev"])
    grunt.registerTask("build", ["jshint", "clean", "uglify", "cssmin", "htmlmin", "copy:dist", "connect", "watch:dist"]);
    grunt.registerTask("refresh", ["jshint", "clean", "copy:dev"]);
-}
+};

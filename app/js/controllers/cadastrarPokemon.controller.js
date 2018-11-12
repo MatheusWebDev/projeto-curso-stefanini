@@ -1,27 +1,27 @@
 angular.module("pokemonApp").controller("cadastrarPokemonController", cadastrarPokemonController);
 
-pokemonController.$inject = ["$scope", "$rootScope", "$location", "pokemonService"];
+cadastrarPokemonController.$inject = ["$scope", "$rootScope", "$location", "pokemonService"];
 
-function pokemonController ($scope, $rootScope, $location, pokemonService) {
-   $scope.contadorId = 0;
+function cadastrarPokemonController ($scope, $rootScope, $location, pokemonService) {
+   $scope.contadorId = 3;
    $scope.service = pokemonService;
-   $scope.pokemon = $scope.service.pokemon; // para nao duplicar -> utilizar service direto
 
-   $scope.inserir = function (pokemon) {
+   $scope.cadastrar = function (pokemon) {
       if (pokemon.id){
-         var pokemonAlterado = $scope.service.listaPokemons.filter(function(pokemonItem) {
+         var pokemonAlterar = $scope.service.listaPokemons.filter(function(pokemonItem) {
             if (pokemonItem.id === pokemon.id) {
                return pokemonItem;
             }
          });
-         var index = $scope.service.listaPokemons.indexOf(pokemonAlterado[0]);
+         var index = $scope.service.listaPokemons.indexOf(pokemonAlterar[0]);
          $scope.service.listaPokemons.splice(index, 1, pokemon);
       } else {
          pokemon.id = ++$scope.contadorId;
+         pokemon.treinador = "Selvagem";
          $scope.service.listaPokemons.push(angular.copy(pokemon));
       }
-      $scope.pokemon = {};
+      //$scope.pokemon = {};
       $scope.service.pokemon = {};
-      $location.path("/listar");
+      $location.path("/pokemons/listar");
    };
 }

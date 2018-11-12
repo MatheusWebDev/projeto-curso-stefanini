@@ -2,17 +2,16 @@ angular.module("pokemonApp").controller("listarPokemonController", listarPokemon
 
 listarPokemonController.$inject = ["$scope", "$rootScope", "$location", "pokemonService"];
 
-function listarPokemonController ($scope, $rootScope, pokemonService, $location) {
+function listarPokemonController ($scope, $rootScope, $location, pokemonService) {
    $scope.service = pokemonService;
-
    
    $scope.deletar = function (index) {
       $scope.service.listaPokemons.splice(index, 1);
    };
 
-   $scope.cadastrar = function () {
-      $scope.service.pokemon = pokemon;
-      $location.path("/cadastrar");
+   $scope.irTelaCadastrar = function () {
+      //$scope.service.pokemon = pokemon;
+      $location.path("/pokemons/cadastrar");
    };
 
    $scope.editar = function () {

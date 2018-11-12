@@ -1,1 +1,20 @@
-<h2 class="display-3 text-center pt-5">Tela de Login</h2>
+<div class="row justify-content-center" ng-controller="abstractController">
+   <div class="col-5">
+      <div class="card">
+         <form class="px-4 py-3" name="loginTreinador" ng-submit="logar(usuario)">
+            <div class="form-group">
+               <label for="nome">Nome:</label>
+               <input type="text" class="form-control" id="nome" ng-required="true" ng-model="usuario.nome">
+            </div>
+            <div class="form-group">
+               <label for="senha">Senha: </label>
+               <input type="password" class="form-control" id="senha" ng-required="true" ng-model="usuario.senha">
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+               <button type="submit" ng-disabled="loginTreinador.$invalid" class="btn btn-primary">Entrar</button>
+               <!-- <a class="card-link text-right" href="#!/treinador/cadastrar">Novo por aqui? Registre-se!</a> -->
+            </div>
+         </form>
+      </div>
+   </div>
+</div>

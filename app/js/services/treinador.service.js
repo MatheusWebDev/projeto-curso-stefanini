@@ -5,7 +5,18 @@ treinadorService.$inject = [];
 
 function treinadorService() {
    var _treinador = {};
-   var _listaTreinadores = [{ id: 1, nome: "Matheus", cidade: {cod: 1, nome: "Pallet Town"}, pokemon: {id: 1, nome: "pikachu"} }];
+   var _listaTreinadores = [
+      {
+         id: 1,
+         nome: "Matheus",
+         senha: "123",
+         cidade: { cod: 1, nome: "Pallet Town" },
+         pokemon: {
+            id: 1, nome: "Pikachu",
+            tipo: { cod: 5, descricao: "Eletrico" }
+         }
+      }
+   ];
    var _listaCidades = [
       {cod: 1, nome: "Pallet Town"},
       {cod: 2, nome: "Viridian City"},

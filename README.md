@@ -20,8 +20,8 @@
 * Para testar
     http://pokemon.bb.com.br/pokemon/rest/pokemon
 
-crud treinador
-inserir os pokemons com treinador
+crud treinador OK
+inserir os pokemons com treinador OK
 tela de login [dados fixos, dados do usuario ficar dentro do rootScope]
 navegação OK
 

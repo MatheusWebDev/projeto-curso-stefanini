@@ -2,12 +2,12 @@ angular.module("pokemonApp", ["ngRoute"])
    .config(config)
    .run(run);
 
-run.$inject = ["$rootScope", "$location"];
+run.$inject = ["$rootScope", "$location", "treinadorService"];
 config.$inject = ["$routeProvider"];
 
 function config($routeProvider) {
    $routeProvider
-      .when("login", {
+      .when("/login", {
          templateUrl: "/app/views/login.html",
          controller: "abstractController"
       })
@@ -32,12 +32,25 @@ function config($routeProvider) {
       });
 }
 
-function run($rootScope, $location) {
-   // $rootScope.$on("$routeChangeStart", function(e, route) {
-   //    //if (route.originalPath !== "/login"){
-   //       //if(!$rootScope.usuario) {
-   //          $location.path("/treinador/login");
-   //       //}
-   //    //}
-   // });
+function run($rootScope, $location, treinadorService) {
+   $rootScope.treinadorFixo = treinadorService.listaTreinadores[0]; 
+   $rootScope.usuario = {};
+   $rootScope.logado = false;
+
+   $rootScope.$on("$routeChangeStart", function(e, route) {
+      if (route.originalPath !== "/login"){
+         $rootScope.checkUsuario(e);
+      }
+   });
+
+   $rootScope.checkUsuario = function (e) {
+      if ($rootScope.usuario !== {}) {
+         if ($rootScope.usuario.nome !== $rootScope.treinadorFixo.nome || $rootScope.usuario.senha !== $rootScope.treinadorFixo.senha) {
+            $location.path("/login");
+            $rootScope.logado = false;
+            return;
+         }
+      }
+      $rootScope.logado = true;
+   };
 }

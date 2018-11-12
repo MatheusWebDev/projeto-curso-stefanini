@@ -7,11 +7,8 @@ function abstractController($scope, $rootScope, $location) {
    $scope.logar = function (usuario) {
       $rootScope.usuario = angular.copy(usuario);
       $rootScope.checkUsuario();
-      $location.path("/treinador/listar");
+      if ($rootScope.logado) { $location.path("/treinador/listar"); }
    };
-   
-   $rootScope.checkUsuario();
-
 
    $scope.sair = function () {
       $rootScope.logado = false;

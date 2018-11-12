@@ -33,24 +33,41 @@ function config($routeProvider) {
 }
 
 function run($rootScope, $location, treinadorService) {
-   $rootScope.treinadorFixo = treinadorService.listaTreinadores[0]; 
+   $rootScope.userFixo = treinadorService.listaTreinadores[0]; 
    $rootScope.usuario = {};
    $rootScope.logado = false;
+   $rootScope.naoLogadoMsg = "";
 
    $rootScope.$on("$routeChangeStart", function(e, route) {
-      if (route.originalPath !== "/login"){
-         $rootScope.checkUsuario(e);
+      if (route.originalPath !== "/login") {
+         $rootScope.naoLogadoMsg = "";
+         $rootScope.naoAuthMsg = "";
+         $rootScope.checkUsuario();
       }
    });
 
-   $rootScope.checkUsuario = function (e) {
-      if ($rootScope.usuario !== {}) {
-         if ($rootScope.usuario.nome !== $rootScope.treinadorFixo.nome || $rootScope.usuario.senha !== $rootScope.treinadorFixo.senha) {
+   $rootScope.checkUsuario = function () {
+      if (!$rootScope.isEmpty($rootScope.usuario)) {
+         if ($rootScope.usuario.nome !== $rootScope.userFixo.nome || $rootScope.usuario.senha !== $rootScope.userFixo.senha) {
+            $rootScope.naoAuthMsg = "Usuario ou Senha incorretos!";
             $location.path("/login");
-            $rootScope.logado = false;
             return;
+         } else {
+            $rootScope.logado = true;
          }
       }
-      $rootScope.logado = true;
+      if ($rootScope.isEmpty($rootScope.usuario)) {
+         $rootScope.naoLogadoMsg = "Faça o Login!";
+         $location.path("/login");
+      }
+   };
+
+   $rootScope.isEmpty = function (obj) {
+      for (var key in obj) {
+         if (obj.hasOwnProperty(key)) {
+            return false;  
+         }
+      }
+      return true;
    };
 }

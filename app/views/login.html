@@ -1,5 +1,11 @@
 <div class="row justify-content-center" ng-controller="abstractController">
    <div class="col-5">
+      <div class="alert alert-danger" ng-show="naoLogadoMsg" role="alert">
+         {{naoLogadoMsg}}
+      </div>
+      <div class="alert alert-danger" ng-show="naoAuthMsg" role="alert">
+         {{naoAuthMsg}}
+      </div>
       <div class="card">
          <form class="px-4 py-3" name="loginTreinador" ng-submit="logar(usuario)">
             <div class="form-group">

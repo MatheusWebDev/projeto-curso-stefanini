@@ -5,10 +5,10 @@ import javax.ws.rs.NotAuthorizedException;
 
 public class LoginService extends ServiceBase {
 	
-	private BaseDeDados baseDados;
+	private BaseDados baseDados;
 
 	@Inject
-	public LoginService(BaseDeDados baseDados) {
+	public LoginService(BaseDados baseDados) {
 		this.baseDados = baseDados;
 	}
 

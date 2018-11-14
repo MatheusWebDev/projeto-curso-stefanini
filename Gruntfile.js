@@ -33,9 +33,6 @@ module.exports = function (grunt) {
                "node_modules/bootstrap/dist/js/bootstrap.min.js",
                "node_modules/jquery/dist/jquery.min.js",
                "node_modules/popper.js/dist/popper.min.js",
-               "node_modules/popper.js/dist/popper.min.js.map",
-               "node_modules/popper.js/dist/popper-utils.min.js",
-               "node_modules/popper.js/dist/popper-utils.min.js.map",
                "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
                "node_modules/@fortawesome/fontawesome-free/webfonts/*.*",
             ],
@@ -44,28 +41,42 @@ module.exports = function (grunt) {
          dev: {
             expand: true,
             src: [
-               "node_modules/angular/angular.js",
-               "node_modules/angular-route/angular-route.js",
-               "node_modules/bootstrap/dist/css/bootstrap.css",
-               "node_modules/bootstrap/dist/css/bootstrap.css.map",
-               "node_modules/bootstrap/dist/js/bootstrap.js",
-               "node_modules/bootstrap/dist/js/bootstrap.js.map",
+               "node_modules/angular/angular.min.js",
+               "node_modules/angular-route/angular-route.min.js",
+               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+               "node_modules/bootstrap/dist/js/bootstrap.min.js",
                "node_modules/jquery/dist/jquery.min.js",
                "node_modules/popper.js/dist/popper.min.js",
-               "node_modules/popper.js/dist/popper.min.js.map",
-               "node_modules/popper.js/dist/popper-utils.min.js",
-               "node_modules/popper.js/dist/popper-utils.min.js.map",
                "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
                "node_modules/@fortawesome/fontawesome-free/webfonts/*.*",
                "app/**",
                "index.html"
             ],
             dest: "dist"
+         },
+         devWindows: {
+            expand: true,
+            src: [
+               "node_modules/angular/angular.min.js",
+               "node_modules/angular-route/angular-route.min.js",
+               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+               "node_modules/bootstrap/dist/js/bootstrap.min.js",
+               "node_modules/jquery/dist/jquery.min.js",
+               "node_modules/popper.js/dist/popper.min.js",
+               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+               "node_modules/@fortawesome/fontawesome-free/webfonts/*.*",
+               "app/**",
+               "index.html"
+            ],
+            dest: "WebContent"
          }
       },
       clean: {
          dist: {
             src: ["dist"]
+         },
+         devWindows: {
+            src: ["WebContent/app"]
          }
       },
       jshint: {
@@ -111,7 +122,7 @@ module.exports = function (grunt) {
    grunt.loadNpmTasks('grunt-contrib-copy');
 
    // TAREFAS
-   grunt.registerTask("default", ["jshint", "clean", "copy:dev", "connect", "watch:dev"])
+   grunt.registerTask("default", ["jshint", "clean:devWindows", "copy:devWindows", "connect", "watch:dev"]);
    grunt.registerTask("build", ["jshint", "clean", "uglify", "cssmin", "htmlmin", "copy:dist", "connect", "watch:dist"]);
-   grunt.registerTask("refresh", ["jshint", "clean", "copy:dev"]);
+   grunt.registerTask("refresh", ["jshint", "clean:devWindows", "copy:devWindows"]);
 };

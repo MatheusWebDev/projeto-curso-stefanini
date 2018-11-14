@@ -19,7 +19,7 @@ import com.stefanini.pokemon.service.UsuarioService;
 @Path("/usuario")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class UsuarioAPI extends ApiBase {
+public class UsuarioApi extends ApiBase {
 	
 	@Inject
 	private UsuarioService usuarioService;

@@ -10,10 +10,10 @@ import com.stefanini.pokemon.dtos.UsuarioDTO;
 import com.stefanini.pokemon.entities.Usuario;
 
 public class UsuarioService extends ServiceBase {
-private BaseDeDados baseDados;
+private BaseDados baseDados;
 	
 	@Inject
-	public UsuarioService(BaseDeDados baseDados) {
+	public UsuarioService(BaseDados baseDados) {
 		this.baseDados = baseDados;
 	}
 	
@@ -24,7 +24,7 @@ private BaseDeDados baseDados;
 		user.setEmail(dto.getEmail());
 		user.setSenha(dto.getSenha());
 		
-		baseDados.salvarUsuario(user);		
+		baseDados.salvar(user);		
 	}
 	
 	//LISTAR USUARIOS
@@ -69,6 +69,6 @@ private BaseDeDados baseDados;
 
 	// DELETAR UM USARIO
 	public void deletar(Long id) {
-		baseDados.deletar(id);
+		baseDados.deletarUsuario(id);
 	}
 }

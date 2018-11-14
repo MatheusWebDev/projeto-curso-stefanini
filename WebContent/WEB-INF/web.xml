@@ -56,5 +56,4 @@
 		<param-name>resteasy.providers</param-name>
 		<param-value>com.stefanini.pokemon.exception.JaxrsExceptionMapper</param-value>
 	</context-param>
-
 </web-app>
